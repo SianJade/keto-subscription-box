@@ -1,6 +1,8 @@
 # Keto Snack Box Subscription Service
 
 Stream Four Project: Full Stack Frameworks with Django - Code Institute
+
+[![Build Status](https://travis-ci.org/SianJade/keto-subscription-box.svg?branch=master)](https://travis-ci.org/SianJade/keto-subscription-box)
  
 ## UX
 
