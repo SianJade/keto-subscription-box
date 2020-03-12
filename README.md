@@ -40,6 +40,12 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 
 ## Testing
+- When setting up Travis' continuous integration, the build was failing with the error "Module not found: no module named env" - this was due to the env.py file being in my .gitignore file and so not being visible to Travis. To resolve this issue I changed `import env` in settings.py in the keto directory to 
+    `try:
+        import env
+    except ModuleNotFoundError:
+        pass`
+This resolved the failing build issue and got the build to start passing.
 
 
 ## Deployment
