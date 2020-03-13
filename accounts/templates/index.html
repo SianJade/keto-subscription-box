@@ -4,3 +4,10 @@
     <li><a href="#">Register</a></li>
     <li><a href="#">Account</a></li>
 </ul>
+{% if messages %}
+<div>
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
