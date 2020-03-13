@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def login(request):
+def index(request):
     """
-    Return login.html page
+    Return index.html page
     """
-    return render(request, 'login.html')
+    return render(request, 'index.html')
