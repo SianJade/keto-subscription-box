@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% block page_title %}{% endblock %}</title>
+  <title>{% block page_title %}{# Inject title of extension page here #}{% endblock %}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -30,6 +30,7 @@
           <a class="nav-link" href="#">Shop All</a>
         </li>
         {% if user.is_authenticated %}
+        {# If the user is logged in then display these nav links #}
           <li class="nav-item">
             <a class="nav-link" href="#">Account</a>
           </li>
@@ -37,6 +38,7 @@
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
         {% else %}
+        {# If the user is not logged in display these nav links #}
           <li class="nav-item">
             <a class="nav-link" href="#">Register</a>
           </li>
@@ -51,15 +53,17 @@
       </form>
     </div>
   </nav>
-  <h1>{% block page_heading %}{% endblock %}</h1>
+  <h1>{% block page_heading %}{# Inject extension page's heading here #}{% endblock %}</h1>
   {% if messages %}
+  {# If there are any feedback messages such as success/error messages for the user, display them here #}
     <div>
       {% for message in messages %}
         {{ message }}
       {% endfor %}
     </div>
   {% endif %}
-  {% block content %}{%endblock %}
+  
+  {% block content %}{# Inject block content here #}{% endblock %}
 </body>
 
 </html>
