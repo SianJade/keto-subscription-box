@@ -29,6 +29,11 @@ def login(request):
             user = auth.authenticate(email=request.POST['email'],
                                      password=request.POST['password'])
             messages.success(request,"Login successful")
+            
+            if user:
+                auth.login(user=user, request=request)
+            else:
+                login_form.add_error(None, "Incorrect email or password")
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
