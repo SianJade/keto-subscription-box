@@ -22,5 +22,13 @@ def login(request):
     """
     Return login page
     """
-    login_form = UserLoginForm()
+    if request.method == 'POST':
+        login_form = UserLoginForm(request.POST)
+        
+        if login_form.is_valid():
+            user = auth.authenticate(email=request.POST['email'],
+                                     password=request.POST['password'])
+            messages.success(request,"Login successful")
+    else:
+        login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
