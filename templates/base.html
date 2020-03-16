@@ -32,7 +32,7 @@
         {% if user.is_authenticated %}
         {# If the user is logged in then display these nav links #}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_profile' %}">Account</a>
+            <a class="nav-link" href="{% url 'profile' %}">Account</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
