@@ -25,7 +25,7 @@ class UserRegistrationForm(UserCreationForm):
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        username = self.cleaned_data('username')
+        username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
             """
             if a user with the entered email already exists in the 
