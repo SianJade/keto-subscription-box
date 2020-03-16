@@ -8,7 +8,7 @@
     <p>If you already have an account, you can <a href="{% url 'login' %}">log in</a>.</p>
     <form method="POST">
         {% csrf_token %}
-        {{ registration_form }}
+        {{ registration_form.as_p }}
         <button class="btn btn-outline-success" type="submit">Register</button>
     </form>
 {% endblock %}
