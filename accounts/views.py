@@ -25,6 +25,9 @@ def login(request):
     Return a login page
     """
     if request.user.is_authenticated:
+        """
+        If the user is already authenticated, return them to the home page
+        """
         return redirect(reverse('index'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
@@ -43,11 +46,38 @@ def login(request):
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
-
+    
 
 def registration(request):
     """
     Render registration page
     """
-    registration_form = UserRegistrationForm()
-    return render(request, 'registration.html', {'registration_form': registration_form})
+    if request.user.is_authenticated:
+        return redirect(reverse('index'))
+
+    if request.method == "POST":
+        registration_form = UserRegistrationForm(request.POST)
+
+        if registration_form.is_valid():
+            """
+            If the info in the registration form is valid, save the form information
+            """
+            registration_form.save()
+            """
+            Once the user has been created, log them in
+            """
+            
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, 'Account registration successful')
+            else:
+                messages.error(request, 'Unable to register your account at this time')
+    else:
+        """
+        Otherwise, render an empty registration form
+        """
+        registration_form = UserRegistrationForm()
+    return render(request, 'registration.html', {
+        "registration_form": registration_form})
