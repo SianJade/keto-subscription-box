@@ -5,6 +5,7 @@
 {% block page_heading %}Login{% endblock %}
 
 {% block content %}
+    <p>Don't have an account? <a href="{% url 'registration' %}">Register here</a>.</p>
     <form method="POST">
         {% csrf_token %}
         {{ login_form }}
