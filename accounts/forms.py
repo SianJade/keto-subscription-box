@@ -33,3 +33,21 @@ class UserRegistrationForm(UserCreationForm):
             """
             raise forms.ValidationError(u'A user  with this email address already exists')
         return email
+    
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        
+        if not password1 or not password2:
+            """
+            Check to see if both passwrd fields have been filled out by the user
+            """
+            raise ValidationError(u'Please confirm your password')
+        
+        if password1 != password2:
+            """
+            If password1 doesn't match password 2 return an error
+            """
+            raise ValidationError(u'Passwords must match')
+        
+        return password2
