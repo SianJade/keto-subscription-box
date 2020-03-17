@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^done/$', password_change_done, name='password_reset_done'),
     # create a unique url for each password reset link sent to a user
     url(r'^(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm,
-        {'post_reset_confirm': reverse_lazy('password_reset_complete')},
+        {'password_reset_confirm': reverse_lazy('password_reset_complete')},
         name='password_reset_confirm'),
     url(r'^complete/$', password_reset_complete, name='password_reset_complete')
 ]
