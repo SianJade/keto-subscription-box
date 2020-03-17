@@ -8,7 +8,7 @@
 
 {% block content %}
     <p>Don't have an account? <a href="{% url 'registration' %}">Register here</a>.</p>
-    <form method="POST">
+    <form method="POST" class="account-form">
         {% csrf_token %}
         {{ login_form | as_bootstrap }}
         <button class="btn btn-outline-success" type="submit">Login</button>
