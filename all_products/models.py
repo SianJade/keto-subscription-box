@@ -13,6 +13,7 @@ class Product(models.Model):
 
 
 class NutritionValue(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, primary_key=True,)
     calories = models.DecimalField(max_digits=5, decimal_places=0)
     fat = models.CharField(max_length=10, default='')
     saturates = models.CharField(max_length=10, default='')
