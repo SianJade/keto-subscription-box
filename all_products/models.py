@@ -9,3 +9,18 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
+
+
+class NutritionValue(models.Model):
+    calories = models.DecimalField(max_digits=5, decimal_places=0)
+    fat = models.CharField(max_length=10, default='')
+    saturates = models.CharField(max_length=10, default='')
+    carbs = models.CharField(max_length=10, default='')
+    sugars = models.CharField(max_length=10, default='')
+    polyols = models.CharField(max_length=10, default='')
+    fibre = models.CharField(max_length=10, default='')
+    protein = models.CharField(max_length=10, default='')
+    salt = models.CharField(max_length=10, default='')
+    
+    def __str__(self):
+        return self.name
