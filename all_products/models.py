@@ -1,7 +1,17 @@
 from django.db import models
 
 # Create your models here.
+
 class Product(models.Model):
+    category_choices = (
+    ('DRINKS', 'Drinks'),
+    ('SWEETENERS', 'Sweeteners'),
+    ('SNACKS', 'Snacks'),
+    ('SWEETS', 'Sweets'),
+    ('FOOD', 'Food'),
+    ('SUPPLEMENTS', 'Supplements'),
+    )
+    category = models.CharField(max_length=50, choices=category_choices, null=True, blank=True)
     name = models.CharField(max_length=254, default='')
     brand = models.CharField(max_length=254, default='')
     description = models.TextField()
@@ -14,7 +24,7 @@ class Product(models.Model):
 
 class NutritionValue(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE, null=True, blank=True)
-    calories = models.DecimalField(max_digits=5, decimal_places=0)
+    calories_per_serving = models.DecimalField(max_digits=5, decimal_places=0)
     fat = models.CharField(max_length=10, default='')
     saturates = models.CharField(max_length=10, default='')
     carbs = models.CharField(max_length=10, default='')
