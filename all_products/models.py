@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
+    name = models.CharField(max_length=254, default='')
+    brand = models.CharField(max_length=254, default='')
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     category_choices = (
     ('DRINKS', 'Drinks'),
     ('SWEETENERS', 'Sweeteners'),
@@ -12,10 +16,6 @@ class Product(models.Model):
     ('SUPPLEMENTS', 'Supplements'),
     )
     category = models.CharField(max_length=50, choices=category_choices, null=True, blank=True)
-    name = models.CharField(max_length=254, default='')
-    brand = models.CharField(max_length=254, default='')
-    description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
     
     def __str__(self):
@@ -36,3 +36,15 @@ class NutritionValue(models.Model):
     
     def __str__(self):
         return self.product.name
+    
+
+class Ingredients(models.Model):
+    ingredient = models.CharField(max_length=75, default='')
+    
+    def __str__(self):
+        return self.ingredient
+
+
+class ProductIngredients(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, null=True, blank=True)
+    ingredients = models.ForeignKey(Ingredients, on_delete=models.CASCADE, null=True, blank=True)
