@@ -3,4 +3,30 @@
 {% load bootstrap_tags %}
 
 {% block content %}
+    {% for item in cart_items %}
+    <div class="card">
+        <img class="card-img-top" src="url('{{MEDIA_URL}}{{ item.product.image }}')" alt="Product image">
+        <div class="card-body">
+            <h5 class="card-title">{{ item.product.name }} - {{ item.product.brand }}</h5>
+            <p class="card-text">{{ item.product.price }}</p>
+            <form method="POST" action="{% url 'adjust_cart' item.id %}" class="form-inline">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Qty</div>
+                        <input name="quantity" type="number" min="0" max="999" class="form-control">
+                        <div class="input-group-addon">{{item.quantity}}</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Adjust Amount</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <p>Total</p>
+        <p><span class="glyphicon glyphicon-pound"></span>{{ total }}</p>
+        <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign"></span>Checkout</a>
+    </div>
 {% endblock %}
