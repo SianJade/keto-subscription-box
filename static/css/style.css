@@ -6,3 +6,8 @@
 .csrf-div {
     display: none;
 }
+
+
+.product-cards {
+    margin: 1rem;
+}
