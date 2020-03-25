@@ -19,6 +19,8 @@ from home.views import index
 from accounts import urls as accounts_urls
 from all_products import urls as products_urls
 from all_products.views import all_products
+from shopping_cart import urls as shopping_cart_urls
+from search import urls as search_urls
 from django.views import static
 from .settings import MEDIA_ROOT
 
