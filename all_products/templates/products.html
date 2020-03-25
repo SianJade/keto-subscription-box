@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    {% for product in products %}
-    <div class="card col-lg-3">
-        <img class="card-img-top" src="url('{{MEDIA_URL}}{{ product.image }}')" alt="Product image">
-        <div class="card-body">
-            <h5 class="card-title">{{ product.name }} - {{ product.brand }}</h5>
-            <p class="card-text">£{{ product.price }}</p>
-            <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                {% csrf_token %}
-                <div class="input_group">
-                    <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity"/>
-                    <br>
-                    <span class="input-group-btn">
+<div class="container container-fluid">
+    <div class="row">
+        {% for product in products %}
+        <div class="card product-cards col-lg-3 col-md-5 mx-auto">
+            <img class="card-img-top" src="url('{{MEDIA_URL}}{{ product.image }}')" alt="Product image">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }} - {{ product.brand }}</h5>
+                <p class="card-text">£{{ product.price }}</p>
+                <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <div class="input_group">
+                        <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" />
+                        <br>
+                        <span class="input-group-btn">
                         <button class="btn btn-success" type="submit">Add to Cart</button>
                     </span>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
