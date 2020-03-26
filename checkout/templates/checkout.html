@@ -6,11 +6,26 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
+    Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+<div class="container container-fluid">
+    <div class="row">
+        {% for item in cart_items %}
+        <div class="card col-lg-3 col-md-5 mx-auto">
+            <div class="card-body">
+                <img class="card-img-top" src="url('{{ MEDIA_URL }}{{ item.product.image }}')">
+                <h3 class="card-title">{{ item.product.name }}</h3>
+                <p class="card-text">{{ item.product.description }}</p>
+                <p>{{ item.quantity }}</p>
+                <p>item.product.price</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
