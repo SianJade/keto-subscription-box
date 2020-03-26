@@ -76,3 +76,7 @@ stripe.api_key = settings.STRIPE_SECRET
             else:
                 print(payment_form.errors)
                 messages.error(request, "Unable to take payment from provided card")
+        else:
+            payment_form = MakePaymentForm()
+            order_form = OrderForm()
+    
