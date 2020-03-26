@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import MakePaymentForm, OrderForm
@@ -10,74 +10,74 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
-@login_required():
-    def checkout(request):
-        if request.method=="POST":
-            """
-            Provides the user with the order and payment forms to fill out
-            """
-            order_form = OrderForm(request.POST)
-            payment_form = MakePaymentForm(request.POST)
+@login_required()
+def checkout(request):
+    if request.method=="POST":
+        """
+        Provides the user with the order and payment forms to fill out
+        """
+        order_form = OrderForm(request.POST)
+        payment_form = MakePaymentForm(request.POST)
             
-            if order_form.is_valid() and payment_form.is_valid():
-                """
-                If the order and payment forms are both valid then save the order
-                details, including the time and date the order was placed
-                """
-                order = order_form.save(commit=False)
-                order.date = timezone.now()
-                order.save()
+        if order_form.is_valid() and payment_form.is_valid():
+            """
+            If the order and payment forms are both valid then save the order
+            details, including the time and date the order was placed
+            """
+            order = order_form.save(commit=False)
+            order.date = timezone.now()
+            order.save()
                 
-                """
-                Retrieve information about which items have been purchased from 
-                the user's current shopping cart in the session by using a for loop
-                to iterate over the id and quantity of each cart item
-                """
-                cart = request.session.get('cart', {})
-                total = 0
-                for id, quantity in cart.items():
-                    product = get_object_or_404(Product, pk=id)
-                    total += quantity * product.price
-                    order_line_item = OrderLineItem(
-                        order = order,
-                        product = product,
-                        quantity = quantity
-                        )
-                    order_line_item.save()
-                
-                try:
-                    """
-                    Create a customer charge using Stripe's built in API which must be
-                    multiplied by 100 as Stripe records everything in pence
-                    """
-                    customer = stripe.Charge.create(
-                        amount = int(total * 100),
-                        currency = "POUND",
-                        description = request.user.email,
-                        card= payment_form.cleaned_data['stripe_id'],
+            """
+            Retrieve information about which items have been purchased from 
+            the user's current shopping cart in the session by using a for loop
+            to iterate over the id and quantity of each cart item
+            """
+            cart = request.session.get('cart', {})
+            total = 0
+            for id, quantity in cart.items():
+                product = get_object_or_404(Product, pk=id)
+                total += quantity * product.price
+                order_line_item = OrderLineItem(
+                    order = order,
+                    product = product,
+                    quantity = quantity
                     )
-                except stripe.error.CardError:
-                    """
-                    Throw an error if the card is declined
-                    """
-                    messages.error(request, "Payment method declined")
+                order_line_item.save()
+                
+            try:
+                """
+                Create a customer charge using Stripe's built in API which must be
+                multiplied by 100 as Stripe records everything in pence
+                """
+                customer = stripe.Charge.create(
+                    amount = int(total * 100),
+                    currency = "POUND",
+                    description = request.user.email,
+                    card= payment_form.cleaned_data['stripe_id'],
+                )
+            except stripe.error.CardError:
+                """
+                Throw an error if the card is declined
+                """
+                messages.error(request, "Payment method declined")
                 
 
-                if customer.paid:
-                    """
-                    Inform the customer if their payment has been successful and 
-                    redirect them to the all products page
-                    """
-                    messages.error(request, "Payment successful")
-                    request.session['cart'] = {}
-                    return redirect(reverse('products'))
-                else:
-                    messages.error(request, "Unable to process payment")
+            if customer.paid:
+                """
+                Inform the customer if their payment has been successful and 
+                redirect them to the all products page
+                """
+                messages.error(request, "Payment successful")
+                request.session['cart'] = {}
+                return redirect(reverse('products'))
             else:
-                print(payment_form.errors)
-                messages.error(request, "Unable to take payment from provided card")
+                messages.error(request, "Unable to process payment")
         else:
-            payment_form = MakePaymentForm()
-            order_form = OrderForm()
-        
-        return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
+            print(payment_form.errors)
+            messages.error(request, "Unable to take payment from provided card")
+    else:
+        payment_form = MakePaymentForm()
+        order_form = OrderForm()
+    
+    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
