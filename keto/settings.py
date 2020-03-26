@@ -137,13 +137,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-)
+    )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
