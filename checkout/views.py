@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
@@ -44,4 +45,19 @@ stripe.api_key = settings.STRIPE_SECRET
                         )
                     order_line_item.save()
                 
-                
+                """
+                Create a customer charge using Stripe's built in API which must be
+                multiplied by 100 as Stripe records everything in pence
+                """
+                try:
+                    customer = stripe.Charge.create(
+                        amount = int(total * 100),
+                        currency = "POUND",
+                        description = request.user.email,
+                        card= payment_form.cleaned_data['stripe_id'],
+                    )
+                """
+                Throw an error if the card is declined
+                """
+                except stripe.error.CardError:
+                    messages.error(request, "Payment method declined")
