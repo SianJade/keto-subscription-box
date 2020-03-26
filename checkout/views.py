@@ -45,28 +45,34 @@ stripe.api_key = settings.STRIPE_SECRET
                         )
                     order_line_item.save()
                 
-                """
-                Create a customer charge using Stripe's built in API which must be
-                multiplied by 100 as Stripe records everything in pence
-                """
                 try:
+                    """
+                    Create a customer charge using Stripe's built in API which must be
+                    multiplied by 100 as Stripe records everything in pence
+                    """
                     customer = stripe.Charge.create(
                         amount = int(total * 100),
                         currency = "POUND",
                         description = request.user.email,
                         card= payment_form.cleaned_data['stripe_id'],
                     )
-                """
-                Throw an error if the card is declined
-                """
                 except stripe.error.CardError:
+                    """
+                    Throw an error if the card is declined
+                    """
                     messages.error(request, "Payment method declined")
                 
-                """
-                Inform the customer if their payment has been successful and 
-                redirect them to the all products page
-                """
+
                 if customer.paid:
+                    """
+                    Inform the customer if their payment has been successful and 
+                    redirect them to the all products page
+                    """
                     messages.error(request, "Payment successful")
                     request.session['cart'] = {}
                     return redirect(reverse('products'))
+                else:
+                    messages.error(request, "Unable to process payment")
+            else:
+                print(payment_form.errors)
+                messages.error(request, "Unable to take payment from provided card")
