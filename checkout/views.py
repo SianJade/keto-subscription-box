@@ -79,4 +79,5 @@ stripe.api_key = settings.STRIPE_SECRET
         else:
             payment_form = MakePaymentForm()
             order_form = OrderForm()
-    
+        
+        return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
