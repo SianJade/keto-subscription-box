@@ -26,7 +26,7 @@ stripe.api_key = settings.STRIPE_SECRET
                 """
                 order = order_form.save(commit=False)
                 order.date = timezone.now()
-                order.save
+                order.save()
                 
                 """
                 Retrieve information about which items have been purchased from 
