@@ -22,14 +22,14 @@
                 <h3 class="card-title">{{ item.product.name }}</h3>
                 <p class="card-text">{{ item.product.description }}</p>
                 <p>{{ item.quantity }}</p>
-                <p>{{ item.product.price }}</p>
+                <p>£{{ item.product.price }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
     <div class="row">
         <p>Total</p>
-        <p><span class="glyphicon glyphicon-pound"></span>{{ total }}</p>
+        <p>£{{ total }}</p>
     </div>
     
     <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
