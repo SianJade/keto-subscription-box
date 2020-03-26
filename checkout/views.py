@@ -61,3 +61,9 @@ stripe.api_key = settings.STRIPE_SECRET
                 """
                 except stripe.error.CardError:
                     messages.error(request, "Payment method declined")
+                
+                """
+                Inform the customer if their payment has been successful
+                """
+                if customer.paid:
+                    messages.error(request, "Payment successful")
