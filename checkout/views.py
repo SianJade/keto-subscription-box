@@ -63,7 +63,10 @@ stripe.api_key = settings.STRIPE_SECRET
                     messages.error(request, "Payment method declined")
                 
                 """
-                Inform the customer if their payment has been successful
+                Inform the customer if their payment has been successful and 
+                redirect them to the all products page
                 """
                 if customer.paid:
                     messages.error(request, "Payment successful")
+                    request.session['cart'] = {}
+                    return redirect(reverse('products'))
