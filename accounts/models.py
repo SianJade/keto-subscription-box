@@ -32,3 +32,6 @@ class Customer(models.Model):
     ('WHEAT', 'Wheat'),
     )
     allegeries_intolerances = models.CharField(max_length=50, choices=allegeries_intolerances_choices, null=True, blank=False)
+    
+    def __str__(self):
+        return self.user
