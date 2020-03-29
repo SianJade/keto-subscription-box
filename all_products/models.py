@@ -39,12 +39,15 @@ class NutritionValue(models.Model):
     
 
 class Ingredients(models.Model):
-    ingredient = models.CharField(max_length=75, default='')
+    name = models.CharField(max_length=75, default='')
     
     def __str__(self):
-        return self.ingredient
+        return self.name
 
 
 class ProductIngredients(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, null=True, blank=True)
-    ingredients = models.ForeignKey(Ingredients, on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
+    ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return self.product.name+ '-' +self.ingredient.name
