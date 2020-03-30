@@ -68,7 +68,7 @@ def registration(request):
             save the form information
             """
             user = registration_form.save()
-            Customer = customer_form.save()
+            Customer = customer_form.save(commit=False)
             Customer.user = user
             Customer.save()
             """
