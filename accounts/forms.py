@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Customer
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
@@ -21,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['email', 'username', 'first_name', 'last_name', 'password1', 'password2']
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -51,3 +52,15 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError(u'Passwords must match')
         
         return password2
+    
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        """
+        Allows user to input their address, dietary choices, and other personal
+        information to be saved to the database
+        """
+        model = Customer
+        fields = (
+            'telephone', 'address_1', 'address_2', 'city', 'county', 'postcode',
+            'dietary_preference', 'allegeries_intolerances'
+        )
