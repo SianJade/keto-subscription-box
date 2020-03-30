@@ -62,7 +62,7 @@ def registration(request):
         registration_form = UserRegistrationForm(request.POST)
         customer_form = CustomerForm(request.POST)
 
-        if registration_form.is_valid() & customer_form.is_valid():
+        if registration_form.is_valid() and customer_form.is_valid():
             """
             If the info in the registration form is valid, save the form information
             """
