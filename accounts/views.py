@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .models import Customer
+from .forms import CustomerForm
 from accounts.forms import UserLoginForm, UserRegistrationForm
 
 def index(request):
@@ -14,7 +16,7 @@ def index(request):
 @login_required
 def logout(request):
     """
-    Log user out
+    Log user out and then return them to the homepage
     """
     auth.logout(request)
     messages.success(request, "Logout successful")
@@ -58,12 +60,14 @@ def registration(request):
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
+        customer_form = CustomerForm(request.POST)
 
-        if registration_form.is_valid():
+        if registration_form.is_valid() & customer_form.is_valid():
             """
             If the info in the registration form is valid, save the form information
             """
             registration_form.save()
+            customer_form.save()
             """
             Once the user has been created, log them in
             """
@@ -80,8 +84,9 @@ def registration(request):
         Otherwise, render an empty registration form
         """
         registration_form = UserRegistrationForm()
+        customer_form = CustomerForm()
     return render(request, 'registration.html', {
-        "registration_form": registration_form})
+        "registration_form": registration_form, "customer_form": customer_form})
 
 
 def user_profile(request):
