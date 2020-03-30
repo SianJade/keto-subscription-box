@@ -64,10 +64,13 @@ def registration(request):
 
         if registration_form.is_valid() and customer_form.is_valid():
             """
-            If the info in the registration form is valid, save the form information
+            If the info in the registration form and customer form is valid,
+            save the form information
             """
-            registration_form.save()
-            customer_form.save()
+            user = registration_form.save()
+            Customer = customer_form.save()
+            Customer.user = user
+            Customer.save()
             """
             Once the user has been created, log them in
             """
