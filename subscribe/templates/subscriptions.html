@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container container-fluid">
+    <div class="row">
+        {% for subscription in subscriptions %}
+        <div class="card subscription-cards col-lg-3 col-md-5 mx-auto">
+            <img class="card-img-top" src="url('{{MEDIA_URL}}{{ subscription.image }}')" alt="Product image">
+            <div class="card-body">
+                <h5 class="card-title">{{ subscription.duration }} - £{{ subscription.price }}</h5>
+                <p class="card-text">{{ subscription.description }}</p>
+                <form method="POST" action="{% url 'add_to_cart' subscription.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
