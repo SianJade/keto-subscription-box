@@ -6,12 +6,6 @@ from .models import Customer
 from .forms import CustomerForm
 from accounts.forms import UserLoginForm, UserRegistrationForm
 
-def index(request):
-    """
-    Return index.html page
-    """
-    return render(request, 'index.html')
-
 
 @login_required
 def logout(request):
