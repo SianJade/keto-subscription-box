@@ -71,10 +71,10 @@ def registration(request):
             Customer = customer_form.save(commit=False)
             Customer.user = user
             Customer.save()
+            
             """
             Once the user has been created, log them in
             """
-            
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
             if user:

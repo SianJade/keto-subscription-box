@@ -5,5 +5,8 @@
 {% block page_heading %}{{ user }}'s Account{% endblock %}
 
 {% block content %}
-
+    <p>{{ profile.first_name }}</p>
+    <p>{{ profile.last_name }}</p>
+    <p>{{ profile.email }}</p>
+    <p>{{ profile.address_1 }}</p>
 {% endblock %}

@@ -47,6 +47,8 @@ As a UK resident, I would like to be able to purchase one of the various keto su
         pass`
 This resolved the failing build issue and got the build to start passing.
 
+- When creating the relationship between the Product model and the NutritionValue models, I initially tried to create a one
+
 
 ## Deployment
 

@@ -28,3 +28,16 @@ class CaseInsensitiveAuth:
             return user
 
         return None
+    
+    
+    def get_user(self, user_id):
+        """
+        Used by the Django authentication system to retrieve a User instance
+        """
+        try:
+            user = User.objects.get(pk=user_id)
+            if user.is_active:
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
