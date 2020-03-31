@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Subscription
 
-# Create your views here.
+def all_subs(request):
+    subscriptions = Subscription.objects.all()
+    return render(request, "subscribe.html", {"subscriptions":  subscriptions})
