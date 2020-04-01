@@ -13,15 +13,18 @@ def cart_contents(request):
     """
     total = 0
     product_count = 0
-    for id, quantity in cart.items():
-        product = get_object_or_404(Product, pk=id)
-        subscription = get_object_or_404(Subscription, pk=id)
-        """
-        Total is a running cost of product price multiplied by product quantity
-        """
-        total += quantity * product.price
+    for product_id, quantity in cart['product']:
+        product = get_object_or_404(Product, pk=product_id)
+        total += product.price * quantity
         product_count += quantity
-        cart_items.append({'id': id, 'quantity': quantity, 'product': product, 'subscription': subscription})
+        cart_items.append({'product_id': product_id, 'quantity': quantity})
+
+    for subscription_id, quantity in cart['subscription']:
+        subscription = get_object_or_404(Subscription, pk=subscription_id)
+        total += subscription.price * quantity
+        product_count += quantity
+        cart_items.append({'subscription_id': subscription_id, 'quantity': quantity})
+
     """
     Return a dictionary of key value pairs for cart items, total, and product count
     """
