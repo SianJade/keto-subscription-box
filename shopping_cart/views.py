@@ -16,7 +16,7 @@ def add_to_cart(request, id):
     cart = request.session.get('cart', {})
     if id in cart:
         """
-        If the id of the selected product is already in the userr's shopping cart
+        If the id of the selected product is already in the user's shopping cart
         and they wish to add another of the same item, then get the integer that
         is the product quantity and add the new product quantity to it
         """
