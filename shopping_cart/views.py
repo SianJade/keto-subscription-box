@@ -11,10 +11,13 @@ def add_to_cart(request, id, category):
     """
     Add selected item to cart
     """
+    print(category)
     quantity=int(request.POST.get('quantity'))
     
     cart = request.session.get('cart', { 'product': {}, 
                                          'subscription': {} } )
+
+    print(cart)
     if id in cart[category]:
         """
         If the id of the selected product is already in the user's shopping cart
