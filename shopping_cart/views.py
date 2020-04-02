@@ -11,13 +11,12 @@ def add_to_cart(request, id, category):
     """
     Add selected item to cart
     """
-    print(category)
     quantity=int(request.POST.get('quantity'))
     
     cart = request.session.get('cart', { 'product': {}, 
                                          'subscription': {} } )
 
-    print(cart)
+
     if id in cart[category]:
         """
         If the id of the selected product is already in the user's shopping cart
@@ -41,7 +40,8 @@ def adjust_cart(request, id):
     Adjust the quantity of the chosen product to the desired amount
     """
     quantity = int(request.POST.get('quantity'))
-    cart = request.session.get('cart', {})
+    cart = request.session.get('cart', { 'product': {}, 
+                                         'subscription': {} } )
 
     if quantity > 0:
         cart[id] = quantity
