@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ subscription.duration }} - £{{ subscription.price }}</h5>
                 <p class="card-text">{{ subscription.description }}</p>
-                <form method="POST" action="{% url 'add_to_cart' subscription.id subscription %}">
+                <form method="POST" action="{% url 'add_to_cart' subscription.id 'subscription' %}">
                     {% csrf_token %}
                     <div class="input_group">
                         <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" />
