@@ -38,7 +38,7 @@ def add_to_cart(request, id, category):
     return redirect(reverse('index'))
 
 
-def adjust_cart(request, id):
+def adjust_cart(request, id, category):
     """
     Adjust the quantity of the chosen product to the desired amount
     """
@@ -47,7 +47,7 @@ def adjust_cart(request, id):
                                          'subscription': {} } )
 
     if quantity > 0:
-        cart[id] = quantity
+        cart[category][id] = quantity
     else:
         cart.pop(id)
     
