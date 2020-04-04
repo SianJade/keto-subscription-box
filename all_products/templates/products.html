@@ -9,7 +9,6 @@
                 <h5 class="card-title">{{ product.name }} - {{ product.brand }}</h5>
                 <p class="card-text">£{{ product.price }}</p>
                 <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
-                
                     {% csrf_token %}
                     <div class="input_group">
                         <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" />
