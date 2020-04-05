@@ -5,7 +5,7 @@
 {% block content %}
     {% for item in cart_items %}
     <div class="card">
-        <img class="card-img-top" src="url('{{MEDIA_URL}}{{ item.image }}')" alt="Product image">
+        <img class="card-img-top" src="{{MEDIA_URL}}{{ item.image }}" alt="Product image">
         <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">{{ item.price }}</p>
