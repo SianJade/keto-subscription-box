@@ -5,10 +5,11 @@
 {% block content %}
     {% for item in cart_items %}
     <div class="card">
-        <img class="card-img-top" src="{{MEDIA_URL}}{{ item.image }}" alt="Product image">
+    {% if item.type == 'product' %}
+        <img class="card-img-top" src="{{MEDIA_URL}}{{ item.product.image }}" alt="Product image">
         <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.price }}</p>
+            <h5 class="card-title">{{ item.product.name }}</h5>
+            <p class="card-text">{{ item.product.price }}</p>
             <form method="POST" action="{% url 'adjust_cart' item.product_id 'product' %}" class="form-inline">
                 {% csrf_token %}
                 <div class="form-group">
@@ -21,6 +22,24 @@
                 </div>
                 <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Adjust Amount</button>
             </form>
+        {% elif item.type == 'subscription' %}
+            <img class="card-img-top" src="{{MEDIA_URL}}{{ item.subscription.image }}" alt="Product image">
+            <div class="card-body">
+            <h5 class="card-title">{{ item.subscription.name }}</h5>
+            <p class="card-text">{{ item.subscription.price }}</p>
+            <form method="POST" action="{% url 'adjust_cart' item.subscription_id 'subscription' %}" class="form-inline">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Qty</div>
+                        <input name="quantity" type="number" min="0" max="999" class="form-control">
+                        <div class="input-group-addon">{{item.quantity}}</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Adjust Amount</button>
+            </form>
+        {% endif %}
         </div>
     </div>
     {% endfor %}
