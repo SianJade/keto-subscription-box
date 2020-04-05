@@ -4,7 +4,7 @@
     <div class="row">
         {% for subscription in subscriptions %}
         <div class="card subscription-cards col-lg-3 col-md-5 mx-auto">
-            <img class="card-img-top" src="url('{{MEDIA_URL}}{{ subscription.image }}')" alt="Product image">
+            <img class="card-img-top" src="{{MEDIA_URL}}{{ subscription.image }}" alt="Product image">
             <div class="card-body">
                 <h5 class="card-title">{{ subscription.duration }} - £{{ subscription.price }}</h5>
                 <p class="card-text">{{ subscription.description }}</p>
