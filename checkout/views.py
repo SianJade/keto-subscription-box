@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MakePaymentForm, OrderForm
+from .forms import MakePaymentForm
+from .models import Order
 from .models import OrderLineItem
 from django.conf import settings
+from accounts.models import Customer
 from django.utils import timezone
 from all_products.models import Product
 import stripe
@@ -16,15 +18,14 @@ def checkout(request):
         """
         Provides the user with the order and payment forms to fill out
         """
-        order_form = OrderForm(request.POST)
+        order = Order(customer = Customer.objects.get(user=request.user), total = request.session.get('cart': total))
         payment_form = MakePaymentForm(request.POST)
             
-        if order_form.is_valid() and payment_form.is_valid():
+        if payment_form.is_valid():
             """
             If the order and payment forms are both valid then save the order
             details, including the time and date the order was placed
             """
-            order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
                 
@@ -44,6 +45,17 @@ def checkout(request):
                     quantity = quantity
                     )
                 order_line_item.save()
+            
+            for id, quantity in cart.items():
+                subscription = get_object_or_404(subscription, pk=id)
+                total += quantity * subscription.price
+                order_line_item = OrderLineItem(
+                    order = order,
+                    subscription = subscription,
+                    quantity = quantity
+                    )
+                subscription_line_item.save()
+            
                 
             try:
                 """
@@ -80,4 +92,4 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
