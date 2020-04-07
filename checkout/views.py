@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MakePaymentForm
+from .forms import MakePaymentForm, OrderForm
 from .models import Order
 from .models import OrderLineItem
 from django.conf import settings
 from accounts.models import Customer
 from django.utils import timezone
 from all_products.models import Product
+from subscribe.models import Subscription
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
@@ -18,14 +19,15 @@ def checkout(request):
         """
         Provides the user with the order and payment forms to fill out
         """
-        order = Order(customer = Customer.objects.get(user=request.user), total = request.session.get('cart': total))
+        order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
             
-        if payment_form.is_valid():
+        if order_form.is_valid() and payment_form.is_valid():
             """
             If the order and payment forms are both valid then save the order
             details, including the time and date the order was placed
             """
+            order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
                 
@@ -64,7 +66,7 @@ def checkout(request):
                 """
                 customer = stripe.Charge.create(
                     amount = int(total * 100),
-                    currency = "POUND",
+                    currency = "GBP",
                     description = request.user.email,
                     card= payment_form.cleaned_data['stripe_id'],
                 )
@@ -92,4 +94,4 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {'payment_form': payment_form, 'publishable_key': settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
