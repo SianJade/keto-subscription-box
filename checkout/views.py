@@ -36,23 +36,26 @@ def checkout(request):
             """
             cart = request.session.get('cart', {})
             total = 0
-            for id, quantity in cart.items():
-                product = get_object_or_404(Product, pk=id)
-                subscription = get_object_or_404(Subscription, pk=id)
-                total += quantity * product.price
-                total += quantity * subscription.price
-                order_line_item = OrderLineItem(
-                    order = order,
-                    product = product,
-                    quantity = quantity
-                    )
-                subscription_line_item = SubscriptionOrderLineItem(
-                    order = order,
-                    subscription = subscription,
-                    quantity = quantity
-                    )
-                order_line_item.save()
-                subscription_line_item.save()
+            for category, category_items in cart.items():
+                for id, quantity in category_items.items():
+                    if category=="Product":
+                        product = get_object_or_404(id, quantity)
+                        total += quantity * product.price
+                        order_line_item = OrderLineItem(
+                            order = order,
+                            product = product,
+                            quantity = quantity
+                            )
+                        order_line_item.save()
+                    if category=="Subscription":
+                        subscription = get_object_or_404(id, quantity)
+                        total += quantity * subscription.price
+                        subscription_line_item = SubscriptionOrderLineItem(
+                            order = order,
+                            subscription = subscription,
+                            quantity = quantity
+                            )
+                        subscription_line_item.save()
             
                 
             try:
