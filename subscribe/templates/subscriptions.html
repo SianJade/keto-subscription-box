@@ -6,7 +6,7 @@
         <div class="card subscription-cards col-lg-3 col-md-5 mx-auto">
             <img class="card-img-top" src="{{MEDIA_URL}}{{ subscription.image }}" alt="Product image">
             <div class="card-body">
-                <h5 class="card-title">{{ subscription.duration }} - £{{ subscription.price }}</h5>
+                <h5 class="card-title">{{ subscription.name }} - £{{ subscription.price }}</h5>
                 <p class="card-text">{{ subscription.description }}</p>
                 <form method="POST" action="{% url 'add_to_cart' subscription.id 'subscription' %}">
                     {% csrf_token %}
