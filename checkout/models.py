@@ -1,18 +1,17 @@
 from django.db import models
 from all_products.models import Product
 from subscribe.models import Subscription
-from accounts.models import Customer
 
 
 class Order(models.Model):
-    full_name = models.CharField(max_length=50, blank=False, default='')
-    phone_number = models.CharField(max_length=20, blank=False, default='')
-    country = models.CharField(max_length=40, blank=False, default='')
-    postcode = models.CharField(max_length=20, blank=True, default='')
-    town_or_city = models.CharField(max_length=40, blank=False, default='')
-    street_address1 = models.CharField(max_length=40, blank=False, default='')
-    street_address2 = models.CharField(max_length=40, blank=False, default='')
-    county = models.CharField(max_length=40, blank=False, default='')
+    full_name = models.CharField(max_length=50, blank=False)
+    phone_number = models.CharField(max_length=20, blank=False)
+    country = models.CharField(max_length=40, blank=False)
+    postcode = models.CharField(max_length=20, blank=True)
+    town_or_city = models.CharField(max_length=40, blank=False)
+    street_address1 = models.CharField(max_length=40, blank=False)
+    street_address2 = models.CharField(max_length=40, blank=False)
+    county = models.CharField(max_length=40, blank=False)
     date = models.DateField()
 
     def __str__(self):
