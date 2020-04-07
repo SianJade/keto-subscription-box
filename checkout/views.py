@@ -5,7 +5,6 @@ from .forms import MakePaymentForm, OrderForm
 from .models import Order
 from .models import OrderLineItem, SubscriptionOrderLineItem
 from django.conf import settings
-from accounts.models import Customer
 from django.utils import timezone
 from all_products.models import Product
 from subscribe.models import Subscription
@@ -21,7 +20,6 @@ def checkout(request):
         """
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
-            
         if order_form.is_valid() and payment_form.is_valid():
             """
             If the order and payment forms are both valid then save the order
