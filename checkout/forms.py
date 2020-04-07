@@ -19,6 +19,9 @@ class MakePaymentForm(forms.Form):
 
 class OrderForm(forms.ModelForm):
     class Meta:
+        """
+        Allows user to input their delievery details
+        """
         model = Order
         fields = (
             'full_name', 'phone_number', 'country', 'postcode',
