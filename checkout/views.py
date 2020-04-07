@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import MakePaymentForm, OrderForm
 from .models import Order
-from .models import OrderLineItem
+from .models import OrderLineItem, SubscriptionOrderLineItem
 from django.conf import settings
 from accounts.models import Customer
 from django.utils import timezone
@@ -51,7 +51,7 @@ def checkout(request):
             for id, quantity in cart.items():
                 subscription = get_object_or_404(subscription, pk=id)
                 total += quantity * subscription.price
-                order_line_item = OrderLineItem(
+                subscription_line_item = SubscriptionOrderLineItem(
                     order = order,
                     subscription = subscription,
                     quantity = quantity
@@ -94,4 +94,4 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
