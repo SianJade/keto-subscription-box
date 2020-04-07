@@ -13,6 +13,7 @@
 {% endblock head_js %}
 
 {% block content %}
+<form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
     <div class="form-group col-md-6">
         {{ order_form | as_bootstrap }}
     </div>
