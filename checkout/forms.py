@@ -5,7 +5,7 @@ class MakePaymentForm(forms.Form):
     """
     Allows the user to select the expiry month and year for their chosen card
     """
-    MONTH_CHOICES = [(i, i) for i in range(1, 12)]
+    MONTH_CHOICES = [(i, i) for i in range(1, 13)]
     YEAR_CHOICES = [(i, i) for i in range(2020, 2040)]
     
     """
@@ -24,7 +24,6 @@ class OrderForm(forms.ModelForm):
         """
         model = Order
         fields = (
-            'full_name', 'phone_number', 'country', 'postcode',
-            'town_or_city', 'street_address1', 'street_address2',
-            'county'
+            'full_name',  'street_address1', 'street_address2', 'town_or_city',
+            'county',  'postcode', 'country', 'phone_number'
         )
