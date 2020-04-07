@@ -40,22 +40,20 @@ def checkout(request):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
+                subscription = get_object_or_404(Subscription, pk=id)
                 total += quantity * product.price
+                total += quantity * subscription.price
                 order_line_item = OrderLineItem(
                     order = order,
                     product = product,
                     quantity = quantity
                     )
-                order_line_item.save()
-            
-            for id, quantity in cart.items():
-                subscription = get_object_or_404(subscription, pk=id)
-                total += quantity * subscription.price
                 subscription_line_item = SubscriptionOrderLineItem(
                     order = order,
                     subscription = subscription,
                     quantity = quantity
                     )
+                order_line_item.save()
                 subscription_line_item.save()
             
                 
