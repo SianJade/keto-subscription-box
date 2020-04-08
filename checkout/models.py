@@ -18,7 +18,6 @@ class Order(models.Model):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
 
 
-
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
@@ -26,6 +25,7 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return "{0} {1} @ {2}".format(self.quantity, self.product.name, self.product.price)
+
 
 class SubscriptionOrderLineItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
