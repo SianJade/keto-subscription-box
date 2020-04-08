@@ -7,6 +7,9 @@ def cart_contents(request):
     Ensures cart contents are available when rendering every page across the site
     """
     cart = request.session.get('cart', { 'product': {}, 'subscription': {}})
+    if cart == {}:
+        cart = { 'product': {}, 'subscription': {}}
+        request.session['cart'] = cart
     cart_items = []
     """
     Initialize cart total and product count
