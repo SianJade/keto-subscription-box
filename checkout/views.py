@@ -34,12 +34,12 @@ def checkout(request):
             the user's current shopping cart in the session by using a for loop
             to iterate over the id and quantity of each cart item
             """
-            cart = request.session.get('cart', {})
+            cart = request.session.get('cart', { 'product': {}, 'subscription': {}})
             total = 0
             for category, category_items in cart.items():
                 for id, quantity in category_items.items():
-                    if category=="Product":
-                        product = get_object_or_404(id, quantity)
+                    if category=="product":
+                        product = get_object_or_404(Product, id=id)
                         total += quantity * product.price
                         order_line_item = OrderLineItem(
                             order = order,
@@ -47,8 +47,8 @@ def checkout(request):
                             quantity = quantity
                             )
                         order_line_item.save()
-                    if category=="Subscription":
-                        subscription = get_object_or_404(id, quantity)
+                    if category=="subscription":
+                        subscription = get_object_or_404(Subscription, id=id)
                         total += quantity * subscription.price
                         subscription_line_item = SubscriptionOrderLineItem(
                             order = order,
@@ -82,7 +82,7 @@ def checkout(request):
                 redirect them to the all products page
                 """
                 messages.error(request, "Payment successful")
-                request.session['cart'] = {}
+                request.session['cart'] = { 'product': {}, 'subscription': {}}
                 return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to process payment")
