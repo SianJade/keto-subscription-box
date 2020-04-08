@@ -32,7 +32,7 @@ def add_to_cart(request, id, category):
         If the item with the selected id is not already in the user's cart, then
         add the specified quantity of the selected item to the user's cart
         """
-        cart[category][id] = cart[category].get(id, quantity)
+        cart[category][id] = quantity
     
     request.session['cart'] = cart
     return redirect(reverse('index'))
