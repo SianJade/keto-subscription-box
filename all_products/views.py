@@ -9,9 +9,9 @@ def all_products(request):
     return render(request, "products.html", {"products":  products})
 
 
-def view_product(request, pk):
+def view_product(request, product_id):
     """
     View more detailed information about a single product on its own page
     """
-    product = get_object_or_404(Product, pk=id)
+    product = get_object_or_404(Product, id=product_id)
     return render(request, "product.html", {"product": product})
