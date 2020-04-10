@@ -3,8 +3,10 @@
 {% load bootstrap_tags %}
 
 {% block content %}
+<div class="container container-fluid">
+<div class="row">
     {% for item in cart_items %}
-    <div class="card">
+    <div class="card product-cards col-lg-3 col-md-5 mx-auto">
     {% if item.type == 'product' %}
         <img class="card-img-top" src="{{MEDIA_URL}}{{ item.product.image }}" alt="Product image">
         <div class="card-body">
@@ -43,9 +45,11 @@
         </div>
     </div>
     {% endfor %}
+    </div>
     <div class="row">
         <p>Total</p>
         <p><span class="glyphicon glyphicon-pound"></span>{{ total }}</p>
         <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign"></span>Checkout</a>
     </div>
+</div>
 {% endblock %}
