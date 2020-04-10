@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load bootstrap_tags %}
 
 {% block head_js %}
@@ -8,7 +9,7 @@
     Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
-<script type="text/javascript" src="{% staticfiles 'js/stripe.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock head_js %}
 
 {% block content %}
