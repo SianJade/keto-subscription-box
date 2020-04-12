@@ -32,7 +32,9 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 ## Features
 ### Existing Features
-- The site features a page which displays three subscription tiers for the user to choose from, between one and six months
+- The site features a page which displays three subscription tiers for the user to choose from, between one and six months in duration, each at a slightly more reduced cost depending on which tier the user chooses to purchase.
+
+- The site also features a seperate 'Shop All Items' section 
 
 ### Features Left to Implement
 - In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
@@ -44,6 +46,23 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 - The ability for users to update their email address or other account details is another feature I would like to add to the site in future releases, in case the user no longer has access to the email address which they used to sign up to the site, or should they change their name and wish to update this in their user details on the site.
 
 ## Technologies Used
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+    - The project uses HTML5 to construct the pages within the application.
+
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)
+    - The project uses CSS3 in order to style the HTML5 and Bootstrap elements and components.
+
+- [Bootstrap (ver 4.3.1)](https://getbootstrap.com/)
+    - The project uses the Bootstrap 4 grid and components in order to achieve a responsive layout and styling.
+
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+    - This project uses Javascript in order for the product filters to function, allowing the user to filter by product price or product category.
+
+- [Python (ver 3.0)](https://www.python.org/download/releases/3.0/)
+    - The project uses Python in order to retrieve required information from the databases of products, subscriptions, orders, and users, as well as to create views and models utilised by Django. Python is also used to create functions which allow the user to create an account, log in and out, and to make purchases of products and subscriptions.
+
+- [Jinja (ver 2.10)](https://jinja.palletsprojects.com/en/2.10.x/)
+    - The project uses the Jinja templating langauge in order to extend the base HTML and prevent unnecessary repetition of HTML code, allowing existing code to be reused where possible. The use of Jinja also allows for variables containing information retrieved from the database to be injected into the HTML and/or looped over to display lists of ingredients and nutritional values for each product.
 
 
 ## Testing
@@ -62,10 +81,8 @@ This resolved the failing build issue and got the build to start passing.
 
 ## Credits
 
-### Content
-
-
-### Media
+### Content and Media
+- All product images, descriptions, ingredient lists, and nutritional values were taken from product listings on [Amazon](https://www.amazon.co.uk/).
 
 
 ### Acknowledgements
