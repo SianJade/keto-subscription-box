@@ -35,7 +35,10 @@ def add_to_cart(request, id, category):
         cart[category][id] = quantity
     
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    if category == 'product':
+        return redirect(reverse('products'))
+    else:
+        return redirect(reverse('subscriptions'))
 
 
 def adjust_cart(request, id, category):
