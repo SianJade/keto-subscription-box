@@ -10,9 +10,9 @@ The purpose of this project is to offer users a monthly, curated box of snacks a
 
 Businesses who wish to stock their own keto-friendly products in the box could also see a benefit to themselves from this service as there is potential for their products and brand to be introduced to new clients, which in turn could create new, returning customers to their business if the clients like their products which are featured in the box.
 
-The site itself allows for customers to customize their box contents to an extent. The contents of each month's box will always be unknown until the customer receives the box, however, the option is available for customers to input any dietary restrictions, allergies, or food intolerances upon the creation of their account via a small form with dropdown menus - this ensures customers are not receiving items which they cannot use in their box each month, or putting them at risk of exposure to allergens - these preferences will be saved for future reference along with the rest of the customer's information. These preferences can be updated at any time via the update account page.
+The site itself allows for customers to customize their box contents to an extent. The contents of each month's box will always be unknown until the customer receives the box, however, the option is available for customers to input any dietary restrictions, allergies, or food intolerances upon the creation of their account via a small form with dropdown menus - this ensures customers are not receiving items which they cannot use in their box each month, or putting them at risk of exposure to allergens - these preferences will be saved for future reference along with the rest of the customer's information.
 
-The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like. The store allows for users to filter products by their price, dietary restrictions, or by ingredients in order to filter out any products that contain potential allergens.
+The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like. The store allows for users to filter products by their price, or item category such as drinks or snacks for ease of browsing. 
 
 ## User Stories
 ### User Story One:
@@ -31,10 +31,17 @@ As a person who suffers from type 2 diabetes and has limited mobilty, my doctor 
 As a UK resident, I would like to be able to purchase one of the various keto subscription boxes available online, however none of these currently exisiting boxes ship to the UK as the companies are all US based and do not offer international shipping - I would like for there to be a UK equivalent of these boxes which I am able to purchase and enjoy.
 
 ## Features
-
- 
 ### Existing Features
+- The site features a page which displays three subscription tiers for the user to choose from, between one and six months
 
+### Features Left to Implement
+- In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
+
+- I would also like to implement a system which allows the user to select a previously saved shipping sddress from an address book that contains every address they have ever had their products shipped to in the past, so that they do not have to fill out their shipping details every time they place a new order, thus saving time and adding to ease of use for the user.
+
+- In future releases I would also like to extend the functionality of the product filters beyond simply filtering by price and category - I would like to add the  ability for users to filter out certain allergens so that only products which do not contain those allergens in their ingredients list will appear in the filtered results, as well as filtering by dietary restrictions such as vegetarianism or veganism.
+
+- The ability for users to update their email address or other account details is another feature I would like to add to the site in future releases, in case the user no longer has access to the email address which they used to sign up to the site, or should they change their name and wish to update this in their user details on the site.
 
 ## Technologies Used
 
