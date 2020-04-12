@@ -2,6 +2,10 @@
 {% block content %}
 <div class="container container-fluid">
     <div class="row">
+        <h1>Subscribe Today</h1>
+        <p>Everyone wants to able to snack on chocolate and other goodies from time to time - why should being keto stop you from enjoying the little things in life? Our subscription box service offers a wide range of new keto-treats each month to help you stay in ketosis and make sure you can still enjoy a varied, fun diet whilst staying on track towards your health goals.</p>
+    </div>
+    <div class="row">
         {% for subscription in subscriptions %}
         <div class="card subscription-cards col-lg-3 col-md-5 mx-auto">
             <img class="card-img-top" src="{{MEDIA_URL}}{{ subscription.image }}" alt="Product image">
