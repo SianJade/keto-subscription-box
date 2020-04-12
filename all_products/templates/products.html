@@ -2,8 +2,12 @@
 {% block content %}
 <div class="container container-fluid">
     <div class="row">
+        <h1>All Products</h1>
+        <p>Browse and purchase from our full range of keto treats and supplements to suit your needs.</p>
+    </div>
+    <div class="row product-row">
         {% for product in products %}
-        <div class="card product-cards col-lg-3 col-md-5 mx-auto">
+        <div class="card product-cards col-lg-3 col-md-5">
             <img class="card-img-top" src="{{MEDIA_URL}}{{ product.image }}" alt="Product image">
             <div class="card-body">
                 <a href="{% url 'view_product' product.id %}">
@@ -13,7 +17,7 @@
                 <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
                     {% csrf_token %}
                     <div class="input_group">
-                        <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" />
+                        <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" value="1" />
                         <br>
                         <span class="input-group-btn">
                             <button class="btn btn-success" type="submit">Add to Cart</button>
