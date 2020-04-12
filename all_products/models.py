@@ -46,8 +46,8 @@ class Ingredients(models.Model):
 
 
 class ProductIngredients(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
-    ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.product.name+ '-' +self.ingredient.name
