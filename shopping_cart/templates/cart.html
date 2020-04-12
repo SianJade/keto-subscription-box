@@ -21,7 +21,7 @@
                         <div class="input-group-addon">{{item.quantity}}</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Adjust Amount</button>
+                <button type="submit" class="btn btn-success">Adjust Amount</button>
             </form>
         {% elif item.type == 'subscription' %}
             <img class="card-img-top" src="{{MEDIA_URL}}{{ item.subscription.image }}" alt="Product image">
@@ -38,7 +38,7 @@
                         <div class="input-group-addon">{{item.quantity}}</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Adjust Amount</button>
+                <button type="submit" class="btn btn-success">Adjust Amount</button>
             </form>
         {% endif %}
         </div>
@@ -46,9 +46,9 @@
     {% endfor %}
     </div>
     <div class="row">
-        <p>Total</p>
-        <p><span class="glyphicon glyphicon-pound"></span>{{ total }}</p>
-        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign"></span>Checkout</a>
+        <div class="col-lg-2 mx-auto">
+            <p>Cart total: £{{ total }}</p>
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
+        </div>
     </div>
-</div>
 {% endblock %}
