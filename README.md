@@ -3,7 +3,9 @@
 Stream Four Project: Full Stack Frameworks with Django - Code Institute
 
 [![Build Status](https://travis-ci.org/SianJade/keto-subscription-box.svg?branch=master)](https://travis-ci.org/SianJade/keto-subscription-box)
- 
+
+A live desktop demo can be found [here](https://keto-subscription-and-store.herokuapp.com/). The source code for this project can be found [here](https://github.com/SianJade/keto-subscription-box).
+
 ## UX
 
 The purpose of this project is to offer users a monthly, curated box of snacks and other products catered towards users who are following the ketogenic diet, or are looking to begin following the ketogenic diet. The service offers users the opportunity to discover new ketogenic snakcs, foods, or other suitable products which they may not have tried before or have previously been aware of. As the ketogenic diet can be quite limiting, this box offers users the chance to potentially widen their food intake or add some more variety to their diet. As with many other subscription box services, the cost of the box itself each month is less than the cost would be were the user to individually purchase all of the items featured in the box each month. Users can subscribe on a month to month basis, or on a three or six monthly basis for a slightly reduced average monthly cost than the month to month option.
@@ -12,7 +14,9 @@ Businesses who wish to stock their own keto-friendly products in the box could a
 
 The site itself allows for customers to customize their box contents to an extent. The contents of each month's box will always be unknown until the customer receives the box, however, the option is available for customers to input any dietary restrictions, allergies, or food intolerances upon the creation of their account via a small form with dropdown menus - this ensures customers are not receiving items which they cannot use in their box each month, or putting them at risk of exposure to allergens - these preferences will be saved for future reference along with the rest of the customer's information.
 
-The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like. The store allows for users to filter products by their price, or item category such as drinks or snacks for ease of browsing. 
+The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like. The store allows for users to filter products by their price, or item category such as drinks or snacks for ease of browsing.
+
+An ER model and wireframes for this project across all screen sizes can be found in the Wireframes folder, which is located within Static folder in the GitHub repository.
 
 ## User Stories
 ### User Story One:
@@ -61,6 +65,9 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 - [Python (ver 3.0)](https://www.python.org/download/releases/3.0/)
     - The project uses Python in order to retrieve required information from the databases of products, subscriptions, orders, and users, as well as to create views and models utilised by Django. Python is also used to create functions which allow the user to create an account, log in and out, and to make purchases of products and subscriptions.
 
+- [Django (ver 1.11.24)](https://www.djangoproject.com/)
+    - This project uses Django as its main framework to create each of the applications within the site as well as to create the models used for each database, including products, ingredients, nutritional values, subscriptions, orders, and users.
+
 - [Jinja (ver 2.10)](https://jinja.palletsprojects.com/en/2.10.x/)
     - The project uses the Jinja templating langauge in order to extend the base HTML and prevent unnecessary repetition of HTML code, allowing existing code to be reused where possible. The use of Jinja also allows for variables containing information retrieved from the database to be injected into the HTML and/or looped over to display lists of ingredients and nutritional values for each product.
 
@@ -71,7 +78,7 @@ As a UK resident, I would like to be able to purchase one of the various keto su
         import env
     except ModuleNotFoundError:
         pass`
-This resolved the failing build issue and got the build to start passing.
+    This resolved the failing build issue and got the build to start passing.
 
 - When creating the relationship between the Product model and the NutritionValue models, I initially tried to create a one
 
