@@ -7,12 +7,16 @@
     display: none;
 }
 
+.product-row{
+    margin: 0 auto;
+}
 
-.product-cards {
-    margin: 1rem;
+.card {
+    margin: 2rem;
 }
 
 .card-img-top {
-    width: 17.5rem;
-    height: 17.5rem;
+    width: 15rem;
+    height: 15rem;
+    padding: 0.5rem;
 }
