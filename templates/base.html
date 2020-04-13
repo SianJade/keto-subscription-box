@@ -65,11 +65,28 @@
       {% endfor %}
     </div>
   {% endif %}
-  
+      <div class="sale-countdown">
+        <h2>OUR HUGE SUMMER SALE STARTS IN: </h2>
+        <table class="container text-center">
+            <tr class="countdown" id="countdown">
+                <td id="days"></td>
+                <td id="hours"></td>
+                <td id="minutes"></td>
+                <td id="seconds"></td>
+            </tr>
+            <tr>
+                <td class="countdown">Days</td>
+                <td class="countdown">Hours</td>
+                <td class="countdown">Minutes</td>
+                <td class="countdown">Seconds</td>
+            </tr>
+        </table>
+    </div>
   {% block content %}{% endblock %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="static/js/countdown.js"></script>
     {% block head_js %}
     {% endblock head_js %}
 </body>
