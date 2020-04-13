@@ -1,6 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Ingredients(models.Model):
+    name = models.CharField(max_length=75, default='')
+    
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=254, default='')
@@ -17,6 +23,7 @@ class Product(models.Model):
     )
     category = models.CharField(max_length=50, choices=category_choices)
     image = models.ImageField(upload_to='images')
+    ingredients = models.ManyToManyField(Ingredients, through='ProductIngredients', through_fields=('product','ingredient'), related_name='ingredients')
     
     def __str__(self):
         return self.name
@@ -36,13 +43,7 @@ class NutritionValue(models.Model):
     
     def __str__(self):
         return self.product.name
-    
 
-class Ingredients(models.Model):
-    name = models.CharField(max_length=75, default='')
-    
-    def __str__(self):
-        return self.name
 
 
 class ProductIngredients(models.Model):
