@@ -6,30 +6,6 @@
     <div class="row">
         <p>Browse and purchase from our full range of keto treats and supplements to suit your needs.</p>
     </div>
-    <div class="row">
-        <p>Filter products by category or price:</p>
-    </div>
-    <div class="row">
-        <div class="form-group">
-            <label for="categoryFilterMenu">Category</label>
-            <select class="form-control" id="categoryFilterMenu" name="categoryFilter">
-                <option class="disabled">Category</option>
-                <option>Food</option>
-                <option>Snacks</option>
-                <option>Sweets</option>
-                <option>Drinks</option>
-                <option>Supplements</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="priceFilterMenu">Price</label>
-            <select class="form-control" id="priceFilterMenu" name="priceFilter">
-                <option class="disabled">Price</option>
-                <option>Low to High</option>
-                <option>High to Low</option>
-            </select>
-        </div>
-    </div>
     <div class="row product-row">
         {% for product in products %}
         <div class="card product-cards col-lg-3 col-md-5">
