@@ -14,7 +14,7 @@ Businesses who wish to stock their own keto-friendly products in the box could a
 
 The site itself allows for customers to customize their box contents to an extent. The contents of each month's box will always be unknown until the customer receives the box, however, the option is available for customers to input any dietary restrictions, allergies, or food intolerances upon the creation of their account via a small form with dropdown menus - this ensures customers are not receiving items which they cannot use in their box each month, or putting them at risk of exposure to allergens - these preferences will be saved for future reference along with the rest of the customer's information.
 
-The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like. The store allows for users to filter products by their price, or item category such as drinks or snacks for ease of browsing.
+The site also allows for purchases of individual items via a seperate online shop, where users can purchase items featured in past boxes as well as products which have not been featured in boxes at all. This allows users who do not wish to receive unknown items each month, or who perhaps cannot afford to pay for a monthly box to still browse and purchase keto products that they wish to try or that they know they will like.
 
 An ER model and wireframes for this project across all screen sizes can be found in the Wireframes folder, which is located within Static folder in the GitHub repository.
 
@@ -38,14 +38,18 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 ### Existing Features
 - The site features a page which displays three subscription tiers for the user to choose from, between one and six months in duration, each at a slightly more reduced cost depending on which tier the user chooses to purchase.
 
-- The site also features a seperate 'Shop All Items' section 
+- The site also features a seperate 'Shop All Items' section, which essentially functions as an ecommerce site for users to brosw and purchase keto-friendly snacks, foods, and supplements should they not wish to purchase a box which they do no know the exact contents of. The name of each of the products on the 'Products' page is clickable and when clicked will link the user to a page containing more information - such as a description, nutritional values, and ingredients - about the selected product.
+
+- In order to avoid information overload to the user, only the product's description is visible upon the individual product information page loading - the nutritional information and ingredients are only displayed once the user clicks the chevron icon beside the respective headings to activate the 'see more' function, which will then display the information the user wishes to read. Each product's nutritional values are displayed in a bootstrap table for ease of reading, and so that they are displayed as they would appear on the label on the back of the physical product so that the information is presented to the user in a way that is familiar and recognisable to them.
+
+- Across the top of the homepage and on the site's subscription and shop pages, a Javascript countdown to a Summer sale to make users aware that a sale will be ocurring on the site soon should they wish to come back to buy products at discounted prices. The Javascript which powers this countdown is in a separate file to the Javascript which provides the functionality of the 'see more' buttons beside the Nutrition Value and Ingredients headings on a product's page - this is to ensure that each JavaScript function is only loaded in on pages where it is required, in order to avoid errors if an element referred to within the Javascript does not exist on the page on which the function has been loaded, which would have been a possibility were both functions to be in the same file as one another.
 
 ### Features Left to Implement
 - In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
 
 - I would also like to implement a system which allows the user to select a previously saved shipping sddress from an address book that contains every address they have ever had their products shipped to in the past, so that they do not have to fill out their shipping details every time they place a new order, thus saving time and adding to ease of use for the user.
 
-- In future releases I would also like to extend the functionality of the product filters beyond simply filtering by price and category - I would like to add the  ability for users to filter out certain allergens so that only products which do not contain those allergens in their ingredients list will appear in the filtered results, as well as filtering by dietary restrictions such as vegetarianism or veganism.
+- In future releases I would also like to add product filters which would allow the user to refine products by price and category, or to filter by certain allergens so that only products which do not contain those allergens in their ingredients list will appear in the filtered results, as well as filtering by dietary restrictions such as vegetarianism or veganism.
 
 - The ability for users to update their email address or other account details is another feature I would like to add to the site in future releases, in case the user no longer has access to the email address which they used to sign up to the site, or should they change their name and wish to update this in their user details on the site.
 
@@ -60,7 +64,7 @@ As a UK resident, I would like to be able to purchase one of the various keto su
     - The project uses the Bootstrap 4 grid and components in order to achieve a responsive layout and styling.
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-    - This project uses Javascript in order for the product filters to function, allowing the user to filter by product price or product category.
+    - This project uses Javascript to power the countdown to the Summer Sale as seen on the home page and product/subscription pages, as well as to control the see more/less buttons on the product nutrition value tables and ingredient lists.
 
 - [Python (ver 3.0)](https://www.python.org/download/releases/3.0/)
     - The project uses Python in order to retrieve required information from the databases of products, subscriptions, orders, and users, as well as to create views and models utilised by Django. Python is also used to create functions which allow the user to create an account, log in and out, and to make purchases of products and subscriptions.
