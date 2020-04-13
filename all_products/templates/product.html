@@ -7,7 +7,9 @@
         <div class="card-body">
             <p class="card-text">{{ product.description }}</p>
             <p class="card-text">£{{ product.price }}</p>
-            <p class="card-text">{% for ingredient in ingredients %} , {% endfor %}</p>
+            {% for ingredient in ingredients %}
+            <p class="card-text">{{ ingredients }}, </p>
+            {% endfor %}
             <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
                 {% csrf_token %}
                 <div class="input_group">
