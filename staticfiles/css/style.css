@@ -1,3 +1,42 @@
+html {
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+.homepage {
+    background-image: url('/static/assets/keto.jpg');
+    background-position: center;
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+.sale-countdown {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    text-shadow: 1px 1px slategray;
+    font-size: 24px;
+}
+
+.countdown-heading {
+    font-weight: bold;
+}
+
+.countdown-table {
+    width: 30%;
+}
+
 .account-form {
     margin: 0 auto;
     width: 50%;
@@ -19,4 +58,22 @@
     width: 15rem;
     height: 15rem;
     padding: 0.5rem;
+}
+
+.product-image {
+    width: 20rem;
+    height: 20rem;
+}
+
+#seeMore1{
+    display: none;
+}
+
+.see-more{
+    background: transparent;
+    border: 0px;
+}
+
+i.fa.fa-chevron-down{
+    color: lightslategray;
 }
