@@ -20,3 +20,21 @@
     height: 15rem;
     padding: 0.5rem;
 }
+
+.product-image {
+    width: 20rem;
+    height: 20rem;
+}
+
+#seeMore1{
+    display: none;
+}
+
+.see-more{
+    background: transparent;
+    border: 0px;
+}
+
+i.fa.fa-chevron-down{
+    color: lightslategray;
+}
