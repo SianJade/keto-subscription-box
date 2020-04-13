@@ -15,5 +15,5 @@ def view_product(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
     nutrition = get_object_or_404(NutritionValue, id=product_id)
-    # ingredients = get_object_or_404(ProductIngredients, id=product_id)
-    return render(request, "product.html", {"product": product, "nutrition": nutrition})
+    ingredients = Product.ingredients.all()
+    return render(request, "product.html", {"product": product, "nutrition": nutrition, 'ingredients': ingredients})
