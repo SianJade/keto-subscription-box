@@ -12,7 +12,7 @@
         <p class="product-info">{{ product.description }}</p>
         <hr>
         <h2>Nutrition Facts</h2>
-        <button onclick="seeMore('#seeMore1')" class="see-more" id="see-more-button"><i class="fa fa-chevron-down"></i></button>
+        <button class="see-more" id="see-nutrition"><i class="fa fa-chevron-down"></i></button>
         <table class="table nutrition-values" id="seeMore1">
             <tbody>
                 <tr>
@@ -54,10 +54,15 @@
             </tbody>
         </table>
         <hr>
-        <p>£{{ product.price }}</p>
-        {% for ingredient in ingredients %}
-        <p>{{ ingredient }} </p>
-        {% endfor %}
+        <h2>Product Ingredients</h2>
+        <button class="see-more" id="see-ingredients"><i class="fa fa-chevron-down"></i></button>
+        <div class="ingredient-container" id="seeMore2">
+            {% for ingredient in ingredients %}
+                <p>{{ ingredient }} </p>
+            {% endfor %}
+        </div>
+        <hr>
+        <h4>£{{ product.price }}</h4>
         <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
             {% csrf_token %}
             <div class="input_group">
