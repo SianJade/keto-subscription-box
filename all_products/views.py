@@ -9,11 +9,13 @@ def all_products(request):
     return render(request, "products.html", {"products":  products})
 
 
-def view_product(request, product_id):
+def view_product(request, id):
     """
     View more detailed information about a single product on its own page
     """
-    product = get_object_or_404(Product, id=product_id)
-    nutrition = get_object_or_404(NutritionValue, id=product_id)
+    product = get_object_or_404(Product, id=id)
+    print(product)
+    nutrition = get_object_or_404(NutritionValue, id=id)
+    print(nutrition)
     ingredients = product.ingredients.all()
     return render(request, "product.html", {"product": product, "nutrition": nutrition, 'ingredients': ingredients})

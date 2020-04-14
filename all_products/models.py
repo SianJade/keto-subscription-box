@@ -26,7 +26,7 @@ class Product(models.Model):
     ingredients = models.ManyToManyField(Ingredients, through='ProductIngredients', through_fields=('product','ingredient'), related_name='ingredients')
     
     def __str__(self):
-        return self.name
+        return '{0} - {1}'.format(self.id, self.name)
 
 
 class NutritionValue(models.Model):

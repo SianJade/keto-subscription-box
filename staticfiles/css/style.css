@@ -65,7 +65,8 @@ body {
     height: 20rem;
 }
 
-#seeMore1{
+#seeMore1,
+#seeMore2 {
     display: none;
 }
 
