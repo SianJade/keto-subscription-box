@@ -11,7 +11,6 @@
     <form method="POST" class="account-form">
         {% csrf_token %}
         {{ registration_form | as_bootstrap }}
-        {{ customer_form | as_bootstrap }}
         <button class="btn btn-outline-success" type="submit">Register</button>
     </form>
 {% endblock %}
