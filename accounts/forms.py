@@ -52,3 +52,12 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError(u'Passwords must match')
         
         return password2
+    
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        """
+        Allows user to input their address, dietary choices, and other personal
+        information to be saved to the database
+        """
+        model = Customer
+        fields = ('dietary_preference', 'allegeries_intolerances')
