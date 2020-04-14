@@ -28,4 +28,4 @@ class Customer(models.Model):
     allegeries_intolerances = models.CharField(max_length=50, choices=allegeries_intolerances_choices)
     
     def __str__(self):
-        return self.user.username
+        return self.user
