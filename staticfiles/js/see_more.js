@@ -1,16 +1,14 @@
 $(document).ready(function() {
-    function seeMore(element) {
+    let seeMoreButton = document.getElementById('see-more-button')
+    seeMoreButton.addEventListener('click', seeMore)
 
-    let buttonClicked = event.target;
-    let more = document.getElementById(element);
-    if (more.style.display === "none") {
-        buttonClicked.innerText = "See Less";
-        more.style.display = "block";
+    function seeMore() {
+        let more = document.getElementById('seeMore1');
+        if (more.style.display === "none") {
+            more.style.display = "block";
+        }
+        else {
+            more.style.display = "none";
+        }
     }
-    else {
-        buttonClicked.innerText = "See More";
-        more.style.display = "none";
-    }
-}
-seeMore();
 });
