@@ -56,7 +56,7 @@ class UserRegistrationForm(UserCreationForm):
 class CustomerForm(forms.ModelForm):
     class Meta:
         """
-        Allows user to input their address, dietary choices, and other personal
+        Allows user to input their dietary choices and allergy
         information to be saved to the database
         """
         model = Customer
