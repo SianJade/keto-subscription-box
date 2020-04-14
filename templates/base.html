@@ -22,33 +22,45 @@
     <div class="collapse navbar-collapse" id="navbarTarget">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'subscriptions' %}">Subscribe</a>
+            <a class="nav-link" href="{% url 'subscriptions' %}">
+                <i class="fa fa-gift"></i> Subscribe
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'products' %}">Shop All</a>
+            <a class="nav-link" href="{% url 'products' %}">
+                <i class="fa fa-shopping-basket"></i> Shop All
+            </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'view_cart' %}">
-            <i class="fa fa-shopping-cart"></i>Cart
+            <i class="fa fa-shopping-cart"></i> Cart
             {% if product_count > 0 %}
             <label class="badge badge-warning">{{ product_count }}</label>
             {% endif %}
           </a>
         </li>
         {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">
+                <i class="fa fa-user"></i> Account
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
+        </li>
         {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'registration' %}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'registration' %}">
+                <i class="fa fa-user-plus"></i> Register
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">
+                <i class="fa fa-sign-in"></i> Login
+            </a>
+        </li>
         {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
