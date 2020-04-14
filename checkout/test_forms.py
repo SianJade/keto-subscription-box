@@ -2,7 +2,7 @@ from django.test import TestCase
 from .forms import MakePaymentForm, OrderForm
 
 class TestMakePaymentForm(TestCase):
-   def test_payment_form_is_valid(self):
+   def test_payment_form(self):
         form = MakePaymentForm({
             'credit_card_number': '4242424242424242',
             'cvv': '',
