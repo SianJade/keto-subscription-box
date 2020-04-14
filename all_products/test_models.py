@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Product
+from .models import Product, NutritionValue
 
 
 class TestProductCreation(TestCase):
@@ -14,3 +14,21 @@ class TestProductCreation(TestCase):
         self.assertEqual(product.price, '1.99')
         self.assertFalse(product.category)
         self.assertFalse(product.image)
+
+
+class TestNutritionValues(TestCase):
+    def test_nutrition_values(self):
+        # assertions are listed in the order in which the fields appear in the NutritionValue model
+        nutrition = NutritionValue(calories_per_serving='123',
+                                    carbs='2.4',
+                                    sugars='2',
+                                    salt='0.01')
+        self.assertNotEqual(nutrition.calories_per_serving, '250')
+        self.assertFalse(nutrition.fat)
+        self.assertFalse(nutrition.saturates)
+        self.assertEqual(nutrition.carbs, '2.4')
+        self.assertNotEqual(nutrition.sugars, '1.2')
+        self.assertFalse(nutrition.polyols)
+        self.assertFalse(nutrition.fibre)
+        self.assertFalse(nutrition.protein)
+        self.assertEqual(nutrition.salt, '0.01')
