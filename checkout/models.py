@@ -7,15 +7,15 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
-    postcode = models.CharField(max_length=20, blank=True)
+    postcode = models.CharField(max_length=20, blank=False)
     town_or_city = models.CharField(max_length=40, blank=False)
     street_address1 = models.CharField(max_length=40, blank=False)
-    street_address2 = models.CharField(max_length=40, blank=False)
-    county = models.CharField(max_length=40, blank=False)
+    street_address2 = models.CharField(max_length=40, blank=True)
+    county = models.CharField(max_length=40, blank=True)
     date = models.DateField()
 
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.full_name, self.date)
+        return "{0}-{1}".format(self.full_name, self.date)
 
 
 class OrderLineItem(models.Model):
@@ -24,7 +24,7 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(self.product.name, self.quantity)
+        return "{0} @ {1}".format(self.product.name, self.quantity)
 
 
 class SubscriptionOrderLineItem(models.Model):
@@ -33,4 +33,4 @@ class SubscriptionOrderLineItem(models.Model):
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(self.subscription.name, self.quantity)
+        return "{0} @ {1}".format(self.subscription.name, self.quantity)
