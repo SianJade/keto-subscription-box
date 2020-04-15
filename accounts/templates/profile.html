@@ -3,9 +3,8 @@
 
 {% block page_title %}{{ user }}'s Account{% endblock %}
 
-{% block page_heading %}Hi, {{ user }}{% endblock %}
-
 {% block content %}
+    <h1>Hi, {{ user }}</h1>
     <p>Full name: {{ profile.first_name }} {{ profile.last_name }}</p>
     <p>Username: {{ profile.username }}</p>
     <p>Email: {{ profile.email }}</p>
