@@ -25,9 +25,9 @@ $(document).ready(function() {
         minutes = (minutes < 10) ? '0' + minutes : minutes;
         seconds = (seconds < 10) ? '0' + seconds : seconds;
 
-        document.getElementById('days').innerHTML = days;
-        document.getElementById('hours').innerHTML = hours;
-        document.getElementById('minutes').innerHTML = minutes;
+        document.getElementById('days').innerHTML = days + ' :';
+        document.getElementById('hours').innerHTML = hours + ' :';
+        document.getElementById('minutes').innerHTML = minutes + ' :';
         document.getElementById('seconds').innerHTML = seconds;
 
         setTimeout(countdown, 1000);
