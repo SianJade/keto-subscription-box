@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
+{% block page_title %}{{product.name}}{% endblock %}
+
 {% block head_js %}
-<script type="text/javascript" src="{% static 'js/see_more.js' %}"></script>
+<script src="{% static 'js/see_more.js' %}"></script>
 {% endblock head_js %}
 
 {% block content %}
