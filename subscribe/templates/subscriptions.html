@@ -20,17 +20,17 @@
     </div>
     <br>
     <h1>Subscribe Today</h1>
-    <br>
     <div class="row">
-        <p>Everyone wants to able to snack on chocolate and other goodies from time to time - why should being keto stop you from enjoying the little things in life? Our subscription box service offers a wide range of new keto-treats each month to help you stay in ketosis and make sure you can still enjoy a varied, fun diet whilst staying on track towards your health goals.</p>
+        <p class="col-lg-8 col-sm-8 mx-auto">Everyone wants to able to snack on chocolate and other goodies from time to time - why should being keto stop you from enjoying the little things in life? Our subscription box service offers a wide range of new keto-treats each month to help you stay in ketosis and make sure you can still enjoy a varied, fun diet whilst staying on track towards your health goals.
+        </p>
     </div>
     <div class="row">
         {% for subscription in subscriptions %}
-        <div class="card subscription-cards col-lg-3 col-md-5 mx-auto">
+        <div class="card subscription-cards col-lg-3  col-md-5 mx-auto">
             <img class="card-img-top" src="{{MEDIA_URL}}{{ subscription.image }}" alt="Product image">
             <div class="card-body">
                 <h5 class="card-title">{{ subscription.name }} - £{{ subscription.price }}</h5>
-                <p class="card-text">{{ subscription.description }}</p>
+                <p class="card-text subscription-info mx-auto">{{ subscription.description }}</p>
                 <form method="POST" action="{% url 'add_to_cart' subscription.id 'subscription' %}">
                     {% csrf_token %}
                     <div class="input_group">
