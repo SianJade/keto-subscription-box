@@ -122,6 +122,14 @@ label {
     float: left;
 }
 
+.password-reset-form {
+    text-align: center;
+}
+
+.reset-password-btn{
+    margin-top: 5%;
+}
+
 /* ------------ MEDIA QUERIES ----------- */
 
 /* --------- SMALL DEVICES ----------- */
@@ -192,13 +200,16 @@ label {
         width: 17.5rem;
     }
 
-    .alert {
-        max-width: 70% !important;
-        min-width: 70%;
+    .sale-countdown{
+        width: 90%;
+        font-size: 12px;
+        font-weight: normal;
     }
 
-    .sale-countdown {
-        width: 97%;
+    .countdown-table {
+        width: 24%;
+        font-size: 12px;
+        font-weight: normal;
     }
 
     .card {
