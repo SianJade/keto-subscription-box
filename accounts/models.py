@@ -12,7 +12,6 @@ class Customer(models.Model):
     ('KOSHER', 'Kosher'),
     ('HALAL', 'Halal'),
     )
-    dietary_preference = models.CharField(max_length=50, choices=dietary_choices)
     allegeries_intolerances_choices = (
     ('NONE', 'None'),
     ('NUTS', 'Nuts'),
@@ -25,7 +24,9 @@ class Customer(models.Model):
     ('SOY', 'Soy'),
     ('WHEAT', 'Wheat'),
     )
+    dietary_preference = models.CharField(max_length=50, choices=dietary_choices)
     allegeries_intolerances = models.CharField(max_length=50, choices=allegeries_intolerances_choices)
     
     def __str__(self):
         return self.user
+    
