@@ -151,8 +151,12 @@ label {
     }
 
     .countdown-table {
-        width: 30%;
+        width: 35%;
         font-size: 12px;
+    }
+
+    p.countdown-heading{
+        margin-right: 0;
     }
 
     .card {
