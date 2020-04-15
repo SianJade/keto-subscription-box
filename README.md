@@ -49,6 +49,7 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 - Other than on the landing page, the site does not feature any background colours or image in order to allow the information within the site, such as the products available and their respective descriptions, to be presented to users clearly, in a way with understandable information architecture, and without distraction or colour schemes which make text difficult to read, as well as to give the site a clean and modern feel in its design. The navbar, however, is a light grey colour so as to provide some clear differentiation between it and the site's content for the user.
 
 - The site also featured django's flash messages at the top of the page, below the nav bar, to inform users of warnings or success messages, such as if the user has paid for an item successfully, created their account successfully, logged out, or if payment cannot be taken from the given card. These messages persist only until the user refreshes or navigates away from the page. In future releases I would like to make these messages more stylised and prominent for the user to notice them wth more ease.
+
 ### Features Left to Implement
 - In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
 
@@ -57,6 +58,8 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 - In future releases I would also like to add product filters which would allow the user to refine products by price and category, or to filter by certain allergens so that only products which do not contain those allergens in their ingredients list will appear in the filtered results, as well as filtering by dietary restrictions such as vegetarianism or veganism.
 
 - The ability for users to update their email address or other account details is another feature I would like to add to the site in future releases, in case the user no longer has access to the email address which they used to sign up to the site, or should they change their name and wish to update this in their user details on the site.
+
+- In future releases I would alsolike to add the functionality for users to persist their cart contents across devices and browsing sessions - saving their cart contents upon ending the session or logging out, and persisting them in memory until next time they log in to their account on the site should they wish to save things for later purchase.
 
 ## Technologies Used
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
