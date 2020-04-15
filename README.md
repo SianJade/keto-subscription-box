@@ -129,12 +129,7 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 - Alternatively, if you have the GitPod browser extension, a small green button reading `gitpod` will be visible next to the `clone or download` button; to run the application localling gitpod simply click this green button and ensure you are logged into your GitHub account.
 
-
 ## Credits
 
 ### Content and Media
 - All product images, descriptions, ingredient lists, and nutritional values were taken from product listings on [Amazon](https://www.amazon.co.uk/).
-
-
-### Acknowledgements
-
