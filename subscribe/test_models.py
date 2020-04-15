@@ -4,9 +4,12 @@ from .models import Subscription
 
 class TestSubscriptionCreation(TestCase):
     def test_subscription_creation(self):
-        # assertions are listed in the order in which the fields appear in the Subscription model
+        """
+        Assertions are listed in the order in which the fields
+        appear in the Subscription model
+        """
         subscription = Subscription(name='1 Month',
-                        price='35.00')
+                                    price='35.00')
         self.assertEqual(subscription.name, '1 Month')
         self.assertFalse(subscription.duration)
         self.assertFalse(subscription.description)

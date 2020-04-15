@@ -1,9 +1,9 @@
 from django.test import TestCase
 from .forms import UserLoginForm, UserRegistrationForm
 
-# Create your tests here.
+
 class TestUserLoginForm(TestCase):
-   def test_user_login_form(self):
+    def test_user_login_form(self):
         form = UserLoginForm({
             'username': 'name',
             'password': 'a_password'
@@ -23,8 +23,7 @@ class TestUserRegistrationForm(TestCase):
         })
         self.assertTrue(form.is_valid())
 
-
-    def test_user_registration_form_returns_invalid_if_invalid_email_used(self):
+    def test_registration_form_invalid_if_invalid_email(self):
         form = UserRegistrationForm({
             'first_name': 'Mrs',
             'last_name': 'Smith',
@@ -36,8 +35,7 @@ class TestUserRegistrationForm(TestCase):
         self.assertFalse(form.is_valid())
         print(form.errors['email'], ['Please enter a valid email address'])
 
-
-    def test_user_registration_form_returns_invalid_if_passwords_do_not_match(self):
+    def test_registration_form_invalid_passwords_do_not_match(self):
         form = UserRegistrationForm({
             'first_name': 'Mrs',
             'last_name': 'Smith',
@@ -47,7 +45,6 @@ class TestUserRegistrationForm(TestCase):
             'password2': 'notthesamepassword'
         })
         self.assertFalse(form.is_valid())
-
 
     def test_user_registration_form_returns_invalid_if_no_username_input(self):
         form = UserRegistrationForm({

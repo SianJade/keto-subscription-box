@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db.models import Q
 
+
 class CaseInsensitiveAuth:
     """
     Authenticate a user by via a case insensitive query which checks the
@@ -28,8 +29,7 @@ class CaseInsensitiveAuth:
             return user
 
         return None
-    
-    
+
     def get_user(self, user_id):
         """
         Used by the Django authentication system to retrieve a User instance

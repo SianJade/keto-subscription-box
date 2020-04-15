@@ -31,8 +31,7 @@ def login(request):
 
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
-                                    password=request.POST['password'])
-            
+                                     password=request.POST['password'])
 
             if user:
                 auth.login(user=user, request=request)
@@ -43,7 +42,7 @@ def login(request):
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
-    
+
 
 def registration(request):
     """
@@ -65,7 +64,7 @@ def registration(request):
             Customer = customer_form.save(commit=False)
             Customer.user = user
             Customer.save()
-            
+
             """
             Once the user has been created, log them in
             """
@@ -76,7 +75,10 @@ def registration(request):
                 messages.success(request, 'Account registration successful')
                 return render(request, 'index.html')
             else:
-                messages.error(request, 'Unable to register your account at this time')
+                messages.error(
+                    request,
+                    'Unable to register your account at this time'
+                )
     else:
         """
         Otherwise, render an empty registration form
@@ -84,7 +86,9 @@ def registration(request):
         registration_form = UserRegistrationForm()
         customer_form = CustomerForm()
     return render(request, 'registration.html', {
-        "registration_form": registration_form, "customer_form": customer_form})
+        "registration_form": registration_form,
+        "customer_form": customer_form
+        })
 
 
 def user_profile(request):

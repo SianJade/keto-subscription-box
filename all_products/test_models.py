@@ -4,10 +4,13 @@ from .models import Product, NutritionValue, Ingredients, ProductIngredients
 
 class TestProductCreation(TestCase):
     def test_product_creation(self):
-        # assertions are listed in the order in which the fields appear in the Product model
+        """
+        Assertions are listed in the order in which
+        the fields appear in the Product model
+        """
         product = Product(name='New Product',
-                        description='A tasty beverage',
-                        price='1.99')
+                          description='A tasty beverage',
+                          price='1.99')
         self.assertEqual(product.name, 'New Product')
         self.assertFalse(product.brand)
         self.assertEqual(product.description, 'A tasty beverage')
@@ -18,11 +21,14 @@ class TestProductCreation(TestCase):
 
 class TestNutritionValues(TestCase):
     def test_nutrition_values(self):
-        # assertions are listed in the order in which the fields appear in the NutritionValue model
+        """
+        Assertions are listed in the order in which
+        the fields appear in the NutritionValue model
+        """
         nutrition = NutritionValue(calories_per_serving='123',
-                                    carbs='2.4',
-                                    sugars='2',
-                                    salt='0.01')
+                                   carbs='2.4',
+                                   sugars='2',
+                                   salt='0.01')
         self.assertNotEqual(nutrition.calories_per_serving, '250')
         self.assertFalse(nutrition.fat)
         self.assertFalse(nutrition.saturates)

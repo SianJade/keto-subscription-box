@@ -12,9 +12,10 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
+
 @login_required()
 def checkout(request):
-    if request.method=="POST":
+    if request.method == "POST":
         """
         Provides the user with the order and payment forms to fill out
         """
@@ -28,69 +29,74 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-                
+
             """
-            Retrieve information about which items have been purchased from 
+            Retrieve information about which items have been purchased from
             the user's current shopping cart in the session by using a for loop
             to iterate over the id and quantity of each cart item
             """
-            cart = request.session.get('cart', { 'product': {}, 'subscription': {}})
+            cart = request.session.get('cart', {'product': {},
+                                                'subscription': {}})
             total = 0
             for category, category_items in cart.items():
                 for id, quantity in category_items.items():
-                    if category=="product":
+                    if category == "product":
                         product = get_object_or_404(Product, id=id)
                         total += quantity * product.price
                         order_line_item = OrderLineItem(
-                            order = order,
-                            product = product,
-                            quantity = quantity
+                            order=order,
+                            product=product,
+                            quantity=quantity
                             )
                         order_line_item.save()
-                    if category=="subscription":
+                    if category == "subscription":
                         subscription = get_object_or_404(Subscription, id=id)
                         total += quantity * subscription.price
                         subscription_line_item = SubscriptionOrderLineItem(
-                            order = order,
-                            subscription = subscription,
-                            quantity = quantity
+                            order=order,
+                            subscription=subscription,
+                            quantity=quantity
                             )
                         subscription_line_item.save()
-            
-                
+
             try:
                 """
-                Create a customer charge using Stripe's built in API which must be
-                multiplied by 100 as Stripe records everything in pence
+                Create a customer charge using Stripe's built in API which must
+                be multiplied by 100 as Stripe records everything in pence
                 """
                 customer = stripe.Charge.create(
-                    amount = int(total * 100),
-                    currency = "GBP",
-                    description = request.user.email,
-                    card= payment_form.cleaned_data['stripe_id'],
+                    amount=int(total * 100),
+                    currency="GBP",
+                    description=request.user.email,
+                    card=payment_form.cleaned_data['stripe_id'],
                 )
             except stripe.error.CardError:
                 """
                 Throw an error if the card is declined
                 """
                 messages.error(request, "Payment method declined")
-                
 
             if customer.paid:
                 """
-                Inform the customer if their payment has been successful and 
+                Inform the customer if their payment has been successful and
                 redirect them to the all products page
                 """
                 messages.error(request, "Payment successful")
-                request.session['cart'] = { 'product': {}, 'subscription': {}}
+                request.session['cart'] = {'product': {}, 'subscription': {}}
                 return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to process payment")
         else:
             print(payment_form.errors)
-            messages.error(request, "Unable to take payment from provided card")
+            messages.error(request,
+                           "Unable to take payment from provided card"
+                           )
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
-    
-    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
+
+    return render(request, "checkout.html",
+                  {'order_form': order_form,
+                   'payment_form': payment_form,
+                   'publishable': settings.STRIPE_PUBLISHABLE
+                   })

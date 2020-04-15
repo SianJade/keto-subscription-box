@@ -1,13 +1,17 @@
 from django.test import TestCase
 from .models import Order
 
+
 class TestOrderCreation(TestCase):
     def test_order_creation(self):
-        # assertions are listed in the order in which the fields appear in the Order model
+        """
+        Assertions are listed in the order in which
+        the fields appear in the Order model
+        """
         order = Order(full_name='Mrs Name',
-                        county='Lancashire',
-                        postcode='NE66 1QF',
-                        phone_number='123456789')
+                      county='Lancashire',
+                      postcode='NE66 1QF',
+                      phone_number='123456789')
         self.assertEqual(order.full_name, 'Mrs Name')
         self.assertFalse(order.street_address1)
         self.assertFalse(order.street_address2)

@@ -31,7 +31,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('HOST'), 'keto-subscription-and-store.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HOST'),
+                 'keto-subscription-and-store.herokuapp.com'
+                 ]
 
 
 # Application definition
@@ -92,14 +94,16 @@ WSGI_APPLICATION = 'keto.wsgi.application'
 
 
 if "DATABASE_URL" in os.environ:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    DATABASES = {'default': dj_database_url.parse(
+                 os.environ.get('DATABASE_URL'))
+                 }
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
         }
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -178,4 +182,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -29,7 +29,9 @@ class OrderLineItem(models.Model):
 
 class SubscriptionOrderLineItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, null=True)
+    subscription = models.ForeignKey(Subscription,
+                                     on_delete=models.CASCADE,
+                                     null=True)
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):

@@ -4,10 +4,13 @@ from .models import User, Customer
 
 class TestUserCreation(TestCase):
     def test_user_creation(self):
-        # assertions are listed in the order in which the fields appear in the User model
+        """
+        Assertions are listed in the order in which
+        the fields appear in the User model
+        """
         user = User(username='User',
-                        password='thisisapassword',
-                        email='testemail@gmail.com')
+                    password='thisisapassword',
+                    email='testemail@gmail.com')
         self.assertEqual(user.username, 'User')
         self.assertNotEqual(user.username, 'incorrectpassword')
         self.assertFalse(user.first_name)
