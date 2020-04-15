@@ -26,6 +26,18 @@ body {
     margin: 0;
 }
 
+h1.landing-page-heading {
+    font-size: 50pt;
+    text-shadow: 1px 1px slategray;
+    color: #F8F9FA;
+}
+
+.landing-page-subheading {
+	color: #F8F9FA;
+	text-shadow: 1px 1px slategrey;
+    font-weight: bold;
+}
+
 .sale-countdown {
     text-align: center;
     font-weight: bold;
@@ -134,12 +146,12 @@ label {
     }
 
     .sale-countdown{
-        width: 90%;
+        width: 95%;
         font-size: 12px;
     }
 
     .countdown-table {
-        width: 25%;
+        width: 30%;
         font-size: 12px;
     }
 
