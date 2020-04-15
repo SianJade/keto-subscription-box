@@ -106,6 +106,14 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 - One other issue that was discorvered during my manual testing of the site's functionality is that the chevron icons beside the Nutrition Value and Ingredient headings needs to be clicked twice on the intial click in order for the SeeMore function to execute and the respective product information to be shown. However, after this initial click, the button only requires one click each time to show and hide the information as intended, unless the page has been reloaded, in which case it takes two clicks again. So far I have not been able to establish the cause of this error, and so have not been able to provide a fix for it, however this is an issue I will look to fix in future releases.
 
+- All HTML code was run through the [W3C HTML Validator](https://validator.w3.org/) and returned no errors.
+
+- All CSS code was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) and returned no errors.
+
+- All Javascript files were run through [JS Hint](https://jshint.com/) and returned no errors.
+
+- All Python files were run through the [PEP8 Online Checker](http://pep8online.com/) and indentation, trailing whitespace, and missing blank lines were ammended accordingly so that no errors or warnings were returned.
+
 
 ## Deployment
 
