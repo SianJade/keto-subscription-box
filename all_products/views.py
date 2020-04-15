@@ -14,8 +14,8 @@ def view_product(request, id):
     View more detailed information about a single product on its own page
     """
     product = get_object_or_404(Product, id=id)
-    print(product)
     nutrition = get_object_or_404(NutritionValue, id=id)
-    print(nutrition)
     ingredients = product.ingredients.all()
     return render(request, "product.html", {"product": product, "nutrition": nutrition, 'ingredients': ingredients})
+
+    
