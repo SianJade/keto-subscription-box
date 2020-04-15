@@ -46,6 +46,8 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 - The site also features a keyword search box in the nav bar so that if user's wish to search for a product by name, brand, or flavour in order to locate a product more quickly then they are able to do that also.
 
+- Other than on the landing page, the site does not feature any background colours or image in order to allow the information within the site, such as the products available and their respective descriptions, to be presented to users clearly and without ditraction, as well as to give the site a clean and modern feel in its design. The navbar, however, is a light grey colour so as to provide some clear differentiation between it and the site's content for the user.
+
 ### Features Left to Implement
 - In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
 
