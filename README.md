@@ -44,6 +44,8 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 - Across the top of the homepage and on the site's subscription and shop pages, a Javascript countdown to a Summer sale to make users aware that a sale will be ocurring on the site soon should they wish to come back to buy products at discounted prices. This countdown is displayed in red text so as to catch the user's eye and convey a sense of urgency and importance. The Javascript which powers this countdown is in a separate file to the Javascript which provides the functionality of the 'see more' buttons beside the Nutrition Value and Ingredients headings on a product's page - this is to ensure that each JavaScript function is only loaded in on pages where it is required, in order to avoid errors if an element referred to within the Javascript does not exist on the page on which the function has been loaded, which would have been a possibility were both functions to be in the same file as one another.
 
+- The site also features a keyword search box in the nav bar so that if user's wish to search for a product by name, brand, or flavour in order to locate a product more quickly then they are able to do that also.
+
 ### Features Left to Implement
 - In future versions of the site I would like to add recurring billing to the site so that user's subscriptions can renew and have the appropriate payment taken from their account automatically once they have reached the end of their chosen subscription tier. For this to work I would also have to implemnt a feature that allows for the user's payment details to be saved so that payment can be taken automatically once their subscription renews.
 
