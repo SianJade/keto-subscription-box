@@ -4,8 +4,14 @@
 {% block page_title %}{{ user }}'s Account{% endblock %}
 
 {% block content %}
+<div class="container container-fluid">
     <h1>Hi, {{ user }}</h1>
+    <br>
     <p>Full name: {{ profile.first_name }} {{ profile.last_name }}</p>
+    <hr>
     <p>Username: {{ profile.username }}</p>
+    <hr>
     <p>Email: {{ profile.email }}</p>
+    <hr>
+</div>
 {% endblock %}
