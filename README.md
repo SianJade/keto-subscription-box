@@ -116,6 +116,18 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 
 ## Deployment
+- The application is hosted via [Heroku](https://keto-subscription-and-store.herokuapp.com/), with the source code being available on [GitHub](https://github.com/SianJade/keto-subscription-box), and is deployed from the master branch - this allows the deployed application to automatically update with any new commits that are made to the master branch.
+    - To deploy the to Heroku successfully, all of the project's requirements must be saved to a `requirements.txt` file via the `pip freeze` command in the terminal.
+    - I then had to set the config vars manually in Heroku in the application's settings tab as Heroku cannot view environment variables stored inside the env.py file as this file is within `.gitignore` since it contains passwords and secret keys and other potentially sensitive informatin - here I set the config vars key value pairs to match the contents of the key value pairs in my environment variables so that Heroku has access to the information for the application to be able to run.
+    - Then to ensure my Heroku app updated in realtime with my commits to my Github repository, I opened up the 'Deploy' tab inside my Heroku dashboard, and connected the Heroku app to the respective GitHub repo and enabled automatic deploys so that all pushes to the master branch on Github would also be pushed to Heroku, meaning I did not have to also push to Heroku manually.
+    
+- To run this application locally:
+    - Click the green 'clone or download' button in the [GitHub repository for the project](https://github.com/SianJade/keto-subscription-box).
+    - Copy the link provided by clicking the clipboard button to the right of the link.
+    - In your terminal, type `git clone`, paste in the previously copied link, and hit return.
+    - The application should now be installed on your device.
+
+- Alternatively, if you have the GitPod browser extension, a small green button reading `gitpod` will be visible next to the `clone or download` button; to run the application localling gitpod simply click this green button and ensure you are logged into your GitHub account.
 
 
 ## Credits
