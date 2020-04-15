@@ -19,14 +19,13 @@
         </table>
     </div>
     <br>
-    <h1 class="mx-auto">All Products</h1>
-    <br>
+    <h1>All Products</h1>
     <div class="row">
-        <h5 class="col-lg-8 mx-auto">Browse and purchase from our full range of keto treats and supplements to suit your needs.</h5>
+        <p class="col-lg-8 mx-auto">Browse and purchase from our full range of keto treats and supplements to suit your needs.</p>
     </div>
     <div class="row product-row">
         {% for product in products %}
-        <div class="card product-cards col-lg-3 col-md-5">
+        <div class="card product-cards col-lg-3 col-md-5 mx-auto">
             <img class="card-img-top" src="{{MEDIA_URL}}{{ product.image }}" alt="Product image">
             <div class="card-body">
                 <a href="{% url 'view_product' product.id %}">
