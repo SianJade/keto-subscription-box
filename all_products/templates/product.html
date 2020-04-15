@@ -5,14 +5,27 @@
 {% endblock head_js %}
 
 {% block content %}
-<h1>{{ product.name }} - {{ product.brand }}</h1>
-<div class="row">
-    <div class="col-lg-6 mx-auto">
-        <img class="product-image" src="{{MEDIA_URL}}{{ product.image }}" alt="Product image">
-        <p class="product-info">{{ product.description }}</p>
+<div class="container container-fluid">
+    <br>
+    <h1>{{ product.name }} - {{ product.brand }}</h1>
+    <br>
+    <div class="row">
+        <img class="product-image col-lg-4 mx-auto" src="{{MEDIA_URL}}{{ product.image }}" alt="Product image">
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row">
+        <p class="product-info col-lg-8 mx-auto">{{ product.description }}</p>
+    </div>
         <hr>
+    <div class="row">
+    <div class="mx-auto product-detail-heading">
         <h2>Nutrition Facts</h2>
         <button class="see-more" id="see-nutrition"><i class="fa fa-chevron-down"></i></button>
+    </div>
+    </div>
+    <div class="row">
         <table class="table nutrition-values" id="seeMore1">
             <tbody>
                 <tr>
@@ -53,26 +66,34 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
-        <h2>Product Ingredients</h2>
-        <button class="see-more" id="see-ingredients"><i class="fa fa-chevron-down"></i></button>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="mx-auto product-detail-heading">
+            <h2>Product Ingredients</h2>
+            <button class="see-more" id="see-ingredients"><i class="fa fa-chevron-down"></i></button>
+        </div>
+    </div>
+    <div class="row">
         <div class="ingredient-container" id="seeMore2">
             {% for ingredient in ingredients %}
                 <p>{{ ingredient }}</p>
             {% endfor %}
         </div>
-        <hr>
-        <h4>£{{ product.price }}</h4>
-        <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
+    </div>
+    <hr>
+    <div class="row">
+        <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}" class="mx-auto">
             {% csrf_token %}
             <div class="input_group">
+                <h4>£{{ product.price }}</h4>
+                <br>
                 <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" value="1"/>
                 <br>
-                <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Add to Cart</button>
-                </span>
+                <button class="btn btn-success" type="submit">Add to Cart</button>
             </div>
         </form>
     </div>
+    <br>
 </div>
 {% endblock %}
