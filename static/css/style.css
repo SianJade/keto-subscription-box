@@ -10,6 +10,10 @@ body {
     text-align: center;
 }
 
+.container-fluid {
+    width: 100vw;
+}
+
 .homepage {
     background-image: url('/static/assets/keto.jpg');
     background-position: center;
@@ -104,4 +108,87 @@ table.nutrition-values,
 
 label {
     float: left;
+}
+
+/* ------------ MEDIA QUERIES ----------- */
+
+/* --------- SMALL DEVICES ----------- */
+
+@media screen and (max-width: 600px) {
+
+    .navbar-nav>li>a {
+        text-align: center;
+        width: 25%;
+        float: right;
+        z-index: 1;
+    }
+
+    .nav-search {
+        width: 10rem !important;
+        float: right;
+    }
+
+    .alert {
+        max-width: 80% !important;
+        min-width: 80%;
+    }
+
+    .sale-countdown{
+        width: 90%;
+        font-size: 12px;
+    }
+
+    .countdown-table {
+        width: 25%;
+        font-size: 12px;
+    }
+
+    .card {
+        width: 85%;
+    }
+
+    .product-image {
+        width: 19rem;
+        height: 22rem;
+    }
+
+    .card-img-top {
+        margin: 0 auto;
+    }
+
+    .product-info,
+    .subscription-info {
+        width: 90%;
+    }
+
+    .form-control {
+        min-width: 100%;
+    }
+}
+@media screen and (min-width:601px) and (max-width:1099px) {
+
+    .navbar-nav>li>a {
+        text-align: center;
+        width: 25%;
+        float: right;
+        z-index: 1;
+    }
+
+    .nav-search {
+        float: right;
+        width: 17.5rem;
+    }
+
+    .alert {
+        max-width: 70% !important;
+        min-width: 70%;
+    }
+
+    .sale-countdown {
+        width: 97%;
+    }
+
+    .card {
+        width: 50%;
+    }
 }
