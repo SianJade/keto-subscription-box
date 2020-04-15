@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block page_title %}Home{% endblock %}
+
 {% block head_js %}
-<script type="text/javascript" src="{% static 'js/countdown.js' %}"></script>
+<script src="{% static 'js/countdown.js' %}"></script>
 {% endblock head_js %}
 
 {% block content %}
