@@ -17,9 +17,8 @@ body {
 .homepage {
     background-image: url('/static/assets/keto.jpg');
     background-position: center;
-    min-height: 100vh;
-    max-height: 100vh;
-    min-width: 100vw;
+    min-height: 100%;
+    min-width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 0;
@@ -83,11 +82,7 @@ h1{
     display: none;
 }
 
-.product-row{
-    margin: 0 auto;
-}
-
-.card {
+.product-card {
     margin: 2rem;
 }
 
@@ -130,6 +125,10 @@ label {
     margin-top: 5%;
 }
 
+.password-reset-complete-msg{
+    font-size: 24px;
+}
+
 /* ------------ MEDIA QUERIES ----------- */
 
 /* --------- SMALL DEVICES ----------- */
@@ -162,6 +161,10 @@ label {
 
     .card {
         width: 85%;
+    }
+
+    .product-card {
+    margin: 0;
     }
 
     .product-image {
@@ -214,5 +217,9 @@ label {
 
     .card {
         width: 50%;
+    }
+
+    .product-card {
+    margin: 0;
     }
 }
