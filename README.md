@@ -30,7 +30,7 @@ As a vegan on the keto diet, it often proves extremely difficult for me to find 
 ### User Story Three:
 As somebody who follows the keto diet but lives in a rural area with little to no access to health food shops from which to purchase keto products, I would like to be able to find a range of products to suit my diet all in one place online and have them delivered to my door at a time that is convenient for me.
 
-### Uer Story Four:
+### User Story Four:
 As a person who suffers from type 2 diabetes and has limited mobilty, my doctor has advised me to try out the keto diet to try and improve my health, however, it can be somewhat difficult for me to get out to the shops to find and purchase foods that are suitable for me to eat. A curated box of foods that has been put together to suit my dietary needs and that can be delivered to me at my home on a regular basis would be extremely helpful to me.
 
 ### User Story Five:
@@ -119,15 +119,21 @@ As a UK resident, I would like to be able to purchase one of the various keto su
 
 ## Deployment
 - The application is hosted via [Heroku](https://keto-subscription-and-store.herokuapp.com/), with the source code being available on [GitHub](https://github.com/SianJade/keto-subscription-box), and is deployed from the master branch - this allows the deployed application to automatically update with any new commits that are made to the master branch.
-    - To deploy the to Heroku successfully, all of the project's requirements must be saved to a `requirements.txt` file via the `pip freeze` command in the terminal.
-    - I then had to set the config vars manually in Heroku in the application's settings tab as Heroku cannot view environment variables stored inside the env.py file as this file is within `.gitignore` since it contains passwords and secret keys and other potentially sensitive informatin - here I set the config vars key value pairs to match the contents of the key value pairs in my environment variables so that Heroku has access to the information for the application to be able to run.
-    - Then to ensure my Heroku app updated in realtime with my commits to my Github repository, I opened up the 'Deploy' tab inside my Heroku dashboard, and connected the Heroku app to the respective GitHub repo and enabled automatic deploys so that all pushes to the master branch on Github would also be pushed to Heroku, meaning I did not have to also push to Heroku manually.
+    - The application is hosted via Heroku, with the source code being available on GitHub, and is deployed from the master branch - this allows the deployed application to automatically update with any new commits that are made to the master branch.
+    - To deploy the site to Heroku, I first had to ensure all of the source code, assets, and requirements were pushed to a GitHub repository.
+    - The application cannot run on Heroku without Heroku being able to access all of the installed project dependencies, so in order to ensure all requirements for the project were available for Heroku to access, I ran the `pip freeze > requirements.txt` command in the terminal - this created a requirements.txt file within the workspace which contains a list of all dependencies and which version of each installed dependency is being used. This could then be pushed to Github with the rest of the application's files.
+    - Once all files were pushed to the Github repository, I created a new application on Heroku, gave it a name and set the region to Europe.
+    - Once the new Heroku application had successfully been created, I opened the 'Deploy' tab and under 'Deployment Method' selected the 'Connect to Github' option and entered the name of the corresponding Github repository for the application.
+    - In order to ensure that the Heroku app builds updated automatically with each push to the corresponding Github repository, I enabled automatic deploys from the master brance under the app's 'Deploy' tab.
+   - Heroku is not able to access any environment variables stored within the env.py file, as this file is contained within .gitignore in order to conceal any passwords and other sensitive information, so each of the environment variables required for the project to function had to be set as config vars within the Heroku app's settings.
     
 - To run this application locally:
     - Click the green 'clone or download' button in the [GitHub repository for the project](https://github.com/SianJade/keto-subscription-box).
     - Copy the link provided by clicking the clipboard button to the right of the link.
     - In your terminal, type `git clone`, paste in the previously copied link, and hit return.
     - The application should now be installed on your device.
+    - Alternatively, if using Gitpod with the Gitpod browser extension installed, click the green 'gitpod' button (beside the 'clone or download' button) - from here you will be prompted to log in to your Github account and the application will now be available to run locally.
+    - Please note that all dependencies included in the requirements.txt file should also be installed in order for the application to successfully run the application locally - to do this, first activate your virtual environment, and then run the command `pip install -r requirements.txt` in your terminal. All of the dependencies required for this project should now be installed.
 
 - Alternatively, if you have the GitPod browser extension, a small green button reading `gitpod` will be visible next to the `clone or download` button; to run the application localling gitpod simply click this green button and ensure you are logged into your GitHub account.
 
