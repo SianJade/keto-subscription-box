@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Shop All{% endblock %}
+
+{% block head_js %}
+<script src="{% static 'js/countdown.js' %}"></script>
+{% endblock head_js %}
+
+{% block content %}
+<div class="container container-fluid">
+    <div class="row sale-countdown">
+        <p class="mx-auto countdown-heading">OUR HUGE SUMMER SALE STARTS IN:</p>
+        <table class="container text-center countdown-table">
+            <tr class="countdown" id="countdown">
+                <td id="days"></td>
+                <td id="hours"></td>
+                <td id="minutes"></td>
+                <td id="seconds"></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <h1>All Products</h1>
+    <div class="row">
+        <p class="col-lg-8 mx-auto">Browse and purchase from our full range of keto treats and supplements to suit your needs.</p>
+    </div>
+    <div class="row product-row">
+        {% for product in products %}
+        <div class="card product-cards col-lg-3 col-md-5 mx-auto">
+            <img class="card-img-top mx-auto" src="{{MEDIA_URL}}{{ product.image }}" alt="Product image">
+            <div class="card-body">
+                <a href="{% url 'view_product' product.id %}">
+                    <h5 class="card-title">{{ product.name }} - {{ product.brand }}</h5>
+                </a>
+                <p class="card-text">£{{ product.price }}</p>
+                <form method="POST" action="{% url 'add_to_cart' product.id 'product' %}">
+                    {% csrf_token %}
+                    <div class="input_group">
+                        <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" value="1" />
+                        <br>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add to Cart</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

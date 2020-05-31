@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Keto Box{% endblock %}
+
+{% block head_js %}
+<script src="{% static 'js/countdown.js' %}"></script>
+{% endblock head_js %}
+
+{% block content %}
+<div class="container container-fluid homepage">
+<br>
+<div class="row sale-countdown">
+        <p class="mx-auto countdown-heading">OUR HUGE SUMMER SALE STARTS IN:</p>
+        <table class="container text-center countdown-table">
+            <tr class="countdown" id="countdown">
+                <td id="days"></td>
+                <td id="hours"></td>
+                <td id="minutes"></td>
+                <td id="seconds"></td>
+            </tr>
+        </table>
+    </div>
+    <h1 class="landing-page-heading">Keto Box</h1>
+    <h4 class="landing-page-subheading">Offering you the latest and greatest in keto-friendly sweets and treats!</h4>
+    <div class="row">
+        <div class="card home-page-card col-lg-4 col-md-5 offset-md-1 mx-auto">
+            <img class="card-img-top mx-auto" src="{% static 'assets/box.jpg' %}" alt="Box image">
+            <div class="card-body text-center">
+                <h3 class="card-title">Subscribe to Our Monthly Box!</h3>
+                <p class="card-text">Keto Box will send you a monthly box full of carefully curated keto goodies! Keep your diet fun and varied and expand your keto horizons by receiving new snacks and treats each month!</p>
+                <a href="{% url 'subscriptions' %}" class="btn btn-success">Shop Now</a>
+            </div>
+        </div>
+        <div class="card home-page-card col-lg-4 col-md-5 mx-auto">
+            <img class="card-img-top mx-auto" src="{% static 'assets/shop.png' %}" alt="Box image">
+            <div class="card-body text-center">
+                <h3 class="card-title">Visit our Keto Store!</h3>
+                <p class="card-text">Don't want a mystery box each month? We've still got you covered with our online keto store! Browse and purchase from a range of keto snacks foods, and supplements to suit your needs - no surprises, just keto goodness!</p>
+                <a href="{% url 'products' %}" class="btn btn-success">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
