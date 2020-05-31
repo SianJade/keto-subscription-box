@@ -9,22 +9,13 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 
 @login_required
 def logout(request):
-    """
-    Log user out and then return them to the homepage
-    """
     auth.logout(request)
     messages.success(request, "Logout successful")
     return redirect(reverse('index'))
 
 
 def login(request):
-    """
-    Return a login page
-    """
     if request.user.is_authenticated:
-        """
-        If the user is already authenticated, return them to the home page
-        """
         return redirect(reverse('index'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
@@ -56,18 +47,11 @@ def registration(request):
         customer_form = CustomerForm(request.POST)
 
         if registration_form.is_valid() and customer_form.is_valid():
-            """
-            If the info in the registration form and customer form is valid,
-            save the form information
-            """
             user = registration_form.save()
             Customer = customer_form.save(commit=False)
             Customer.user = user
             Customer.save()
 
-            """
-            Once the user has been created, log them in
-            """
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
             if user:
@@ -80,9 +64,6 @@ def registration(request):
                     'Unable to register your account at this time'
                 )
     else:
-        """
-        Otherwise, render an empty registration form
-        """
         registration_form = UserRegistrationForm()
         customer_form = CustomerForm()
     return render(request, 'registration.html', {
@@ -92,8 +73,5 @@ def registration(request):
 
 
 def user_profile(request):
-    """
-    View the user's profile page
-    """
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
