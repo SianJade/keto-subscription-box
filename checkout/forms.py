@@ -3,15 +3,9 @@ from .models import Order
 
 
 class MakePaymentForm(forms.Form):
-    """
-    Allows the user to select the expiry month and year for their chosen card
-    """
     MONTH_CHOICES = [(i, i) for i in range(1, 13)]
     YEAR_CHOICES = [(i, i) for i in range(2020, 2040)]
 
-    """
-    Fields for user to input their card details
-    """
     credit_card_number = forms.CharField(
         label='Credit/debit card number', required=False
         )
@@ -31,9 +25,6 @@ class MakePaymentForm(forms.Form):
 
 class OrderForm(forms.ModelForm):
     class Meta:
-        """
-        Allows user to input their delievery details
-        """
         model = Order
         fields = (
             'full_name',  'street_address1', 'street_address2', 'town_or_city',

@@ -16,25 +16,13 @@ stripe.api_key = settings.STRIPE_SECRET
 @login_required()
 def checkout(request):
     if request.method == "POST":
-        """
-        Provides the user with the order and payment forms to fill out
-        """
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
         if order_form.is_valid() and payment_form.is_valid():
-            """
-            If the order and payment forms are both valid then save the order
-            details, including the time and date the order was placed
-            """
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
 
-            """
-            Retrieve information about which items have been purchased from
-            the user's current shopping cart in the session by using a for loop
-            to iterate over the id and quantity of each cart item
-            """
             cart = request.session.get('cart', {'product': {},
                                                 'subscription': {}})
             total = 0
@@ -60,10 +48,6 @@ def checkout(request):
                         subscription_line_item.save()
 
             try:
-                """
-                Create a customer charge using Stripe's built in API which must
-                be multiplied by 100 as Stripe records everything in pence
-                """
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
                     currency="GBP",
@@ -71,16 +55,9 @@ def checkout(request):
                     card=payment_form.cleaned_data['stripe_id'],
                 )
             except stripe.error.CardError:
-                """
-                Throw an error if the card is declined
-                """
                 messages.error(request, "Payment method declined")
 
             if customer.paid:
-                """
-                Inform the customer if their payment has been successful and
-                redirect them to the all products page
-                """
                 messages.error(request, "Payment successful")
                 request.session['cart'] = {'product': {}, 'subscription': {}}
                 return redirect(reverse('products'))
