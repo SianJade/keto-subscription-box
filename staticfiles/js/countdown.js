@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //Countdown to Summer Sale
     function countdown() {
-        let saleStarts = 'June 30, 2020 00:00:00';
+        let saleStarts = 'May 30, 2020 00:00:00';
         let startDate = new Date();
         let endDate = new Date(saleStarts);
 
